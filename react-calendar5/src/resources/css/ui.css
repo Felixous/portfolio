@@ -1,0 +1,71 @@
+/* fonts */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/noto-sans-kr-400.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/noto-sans-kr-400.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/noto-sans-kr-400.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/noto-sans-kr-400.woff') format('woff'); /* Modern Browsers */
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/noto-sans-kr-500.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/noto-sans-kr-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/noto-sans-kr-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/noto-sans-kr-500.woff') format('woff'); /* Modern Browsers */
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/noto-sans-kr-700.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/noto-sans-kr-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/noto-sans-kr-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/noto-sans-kr-700.woff') format('woff'); /* Modern Browsers */
+}
+
+
+/* reset */
+* { margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+button { border: none; line-height: inherit; font-size: inherit; color: inherit; background: none; }
+caption { display: none; }
+
+/* common */
+.btn { cursor: pointer; }
+a:hover, .btn:hover { opacity: 0.7; }
+.ico { display: inline-block; }
+.inner-frame { max-width: 1260px; margin: 0 auto; padding: 0 30px; }
+
+
+/* layout */
+html { line-height: 1.5; font-family: 'Noto Sans KR', sans-serif; color: #303030; }
+
+
+/* header */
+header { background: #2b2e39; color: #fff; padding: 20px 0; }
+header h1 { margin: 0 0 10px 0; font-size: 14px; }
+header .row:after { content: ''; display: block; clear: both; }
+header ul.menu-list { float: left; margin: 0 0 0 -10px; }
+header ul.menu-list > li { display: inline-block; vertical-align: top; margin: 0 10px 0 0; }
+header ul.menu-list > li a { display: inline-block; vertical-align: top; padding: 3px 10px 5px; }
+header ul.menu-list > li.is-active { border-radius: 16px; background: #559af7; }
+header .btn-add-event { float: right; width: 32px; height: 32px; background: url('../images/icons/icon-plus.png') no-repeat center; background-size: 30px; }
+
+
+/* calendar */
+.calendar {}
+.calendar h2 { padding: 10px 0; font-size: 18px; font-weight: 400; }
+.calendar h2 .month { margin: 0 10px 0 0; font-weight: 700; }
+.calendar h2 .year {}
+
+
+table.tbl-calendar { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.tbl-calendar thead th { font-size: 14px; font-weight: 400; }
+table.tbl-calendar thead th.weekend { color: #559af7; }
+table.tbl-calendar thead th.holiday { color: #fa5252; }
+table.tbl-calendar tbody td {}
+

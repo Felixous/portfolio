@@ -1,3 +1,9 @@
+// UI css
+import './resources/css/ui.css';
+
+// UI js
+import './resources/js/ui.js';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
