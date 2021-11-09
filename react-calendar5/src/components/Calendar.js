@@ -1,8 +1,7 @@
 import React from 'react';
 
-import CalendarHead from './CalendarHead';
-import CalendarMain from './CalendarMain';
-import CalendarSelect from './CalendarSelect';
+import CalendarHead from '../containers/CalendarHead';
+import CalendarMain from '../containers/CalendarMain';
 
 const Calendar = () => {
 	return (
@@ -10,7 +9,6 @@ const Calendar = () => {
 			<div className="inner-frame">
 				<CalendarHead />
 				<CalendarMain />
-				<CalendarSelect />
 			</div>
 		</div>
 	);
