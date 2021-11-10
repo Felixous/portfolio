@@ -6,7 +6,8 @@ const mapReduxStateToReactProps = (state) => {
 	return {
 		year: state.year,
 		month: state.month,
-		date: state.date
+		date: state.date,
+		events: state.events
 	}
 }
 const mapReduxDispatchToReactProps = (dispatch) => {

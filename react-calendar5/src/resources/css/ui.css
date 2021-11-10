@@ -29,6 +29,7 @@
 
 /* reset */
 * { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
 a { text-decoration: none; color: inherit; }
 button { border: none; line-height: inherit; font-size: inherit; color: inherit; background: none; }
 caption { display: none; }
@@ -67,18 +68,31 @@ header .btn-add-event { float: right; width: 32px; height: 32px; background: url
 .calendar .calendar-head .change-month .btn-prev-month {}
 .calendar .calendar-head .change-month .btn-next-month {}
 
-
 table.tbl-calendar { width: 100%; border-collapse: collapse; table-layout: fixed; }
 table.tbl-calendar thead th { padding: 5px 0; font-size: 14px; font-weight: 400; }
 table.tbl-calendar thead th.weekend { color: #559af7; }
 table.tbl-calendar thead th.holiday { color: #fa5252; }
-table.tbl-calendar tbody td { height: 100px; padding: 4px 10px; border: 1px solid #d8d8d8; box-sizing: border-box; vertical-align: top; text-align: right; font-size: 14px; }
+table.tbl-calendar tbody td { height: 100px; border: 1px solid #d8d8d8; box-sizing: border-box; vertical-align: top; font-size: 14px; }
 table.tbl-calendar tbody td.this-week { background: #f0f7fe; }
-table.tbl-calendar tbody td.today { color: #fff; background: #559af7; }
-table.tbl-calendar tbody td.other-month { color: #999; background: #f7f7f7; }
+table.tbl-calendar tbody td.today {}
+table.tbl-calendar tbody td.other-month { background: #f7f7f7; }
+
+table.tbl-calendar tbody td .date-num { padding: 4px 10px; text-align: right; }
+table.tbl-calendar tbody td.today .date-num { color: #fff; background: #559af7; }
+table.tbl-calendar tbody td ul.event-list {}
+table.tbl-calendar tbody td ul.event-list > li { padding: 0 4px; border: 2px solid #c077db; font-size: 13px; background: #f8f1fb; }
+table.tbl-calendar tbody td.other-month .date-num { opacity: 0.5; }
+table.tbl-calendar tbody td.other-month ul.event-list { opacity: 0.5; }
 
 
-ul.month-list { padding: 10px 0 0 0; text-align: center; }
-ul.month-list > li { display: inline-block; vertical-align: top; margin: 0 10px; }
-ul.month-list > li a { display: inline-block; vertical-align: top; padding: 3px 10px 5px; }
-ul.month-list > li.is-active { border-radius: 16px; color: #fff; background: #559af7; }
+/* write popup */
+.write-popup { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); }
+.write-popup .popup-layout { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 500px; height: 300px; margin: auto; border-radius: 12px; background: #fff; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
+.write-popup .popup-layout .header {}
+.write-popup .popup-layout .header strong { display: block; padding: 0 80px; text-align: center; line-height: 40px; }
+.write-popup .popup-layout .header .btn { position: absolute; font-size: 14px; line-height: 40px; }
+.write-popup .popup-layout .header .btn-cancel { top: 0; left: 20px; }
+.write-popup .popup-layout .header .btn-save { top: 0; right: 20px; font-weight: 700; color: #3478f6; }
+
+
+

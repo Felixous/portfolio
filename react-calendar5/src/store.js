@@ -1,9 +1,46 @@
 import { createStore } from 'redux';
 
 const initialState = {
-	year: 2021,
-	month: 11,
-	date: 9
+	year: new Date().getFullYear(),
+	month: new Date().getMonth() + 1,
+	date: new Date().getDate(),
+	events: [
+		{
+			id: 1,
+			year: 2021,
+			month: 11,
+			date: 13,
+			text: '관리비'
+		},
+		{
+			id: 2,
+			year: 2021,
+			month: 12,
+			date: 25,
+			text: '크리스마스'
+		},
+		{
+			id: 3,
+			year: 2021,
+			month: 11,
+			date: 7,
+			text: '벨규형 생일'
+		},
+		{
+			id: 4,
+			year: 2021,
+			month: 11,
+			date: 23,
+			text: '아빠 생일'
+		},
+		{
+			id: 5,
+			year: 2021,
+			month: 12,
+			date: 1,
+			text: '아무이벤트'
+		},
+	]
 }
 
 export const nextMonthAction = () => {
@@ -45,6 +82,20 @@ export default createStore((state = initialState, action) => {
 					...state,
 					month: state.month - 1
 				}
+			}
+		case 'ADD_EVENT':
+			return {
+				...state,
+				events: [
+					...state.events,
+					{
+						id: state.events.length + 1,
+						year: action.data.year,
+						month: action.data.month,
+						date: action.data.date,
+						text: action.data.text
+					}
+				]
 			}
 		default:
 			return state;
