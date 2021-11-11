@@ -4,6 +4,21 @@ const initialState = {
 	year: new Date().getFullYear(),
 	month: new Date().getMonth() + 1,
 	date: new Date().getDate(),
+	categories: [
+		{
+			name: 'Home',
+			color: 'blue'
+		}, {
+			name: 'Friends',
+			color: 'green'
+		}, {
+			name: 'Works',
+			color: 'red'
+		}, {
+			name: 'Etc',
+			color: 'yellow'
+		}
+	],
 	events: [
 		{
 			id: 1,
@@ -88,13 +103,7 @@ export default createStore((state = initialState, action) => {
 				...state,
 				events: [
 					...state.events,
-					{
-						id: state.events.length + 1,
-						year: action.data.year,
-						month: action.data.month,
-						date: action.data.date,
-						text: action.data.text
-					}
+					action.data
 				]
 			}
 		default:

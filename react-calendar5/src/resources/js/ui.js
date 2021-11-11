@@ -129,9 +129,102 @@ export const getFullMonthName = (number) => { // 1 ~ 12
 	}
 }
 
+export const getShortMonthName = (number) => { // 1 ~ 12
+	switch (number) {
+		case 1:
+			return 'Jan';
+		case 2:
+			return 'Feb';
+		case 3:
+			return 'Mar';
+		case 4:
+			return 'Apr';
+		case 5:
+			return 'May';
+		case 6:
+			return 'Jun';
+		case 7:
+			return 'Jul';
+		case 8:
+			return 'Aug';
+		case 9:
+			return 'Sep';
+		case 10:
+			return 'Oct';
+		case 11:
+			return 'Nov';
+		case 12:
+			return 'Dec';
+	}
+}
+
+export const getMonthFromShortName = (number) => { // 1 ~ 12
+	switch (number) {
+		case 'Jan':
+			return 1;
+		case 'Feb':
+			return 2;
+		case 'Mar':
+			return 3;
+		case 'Apr':
+			return 4;
+		case 'May':
+			return 5;
+		case 'Jun':
+			return 6;
+		case 'Jul':
+			return 7;
+		case 'Aug':
+			return 8;
+		case 'Sep':
+			return 9;
+		case 'Oct':
+			return 10;
+		case 'Nov':
+			return 11;
+		case 'Dec':
+			return 12;
+	}
+}
+
 export const getTodayWeekNum = () => {
 	let today = new Date();
 	let firstDay = (new Date(today.getFullYear(), today.getMonth())).getDay();
 
 	return Math.ceil((firstDay + today.getDate()) / 7) - 1;
+}
+
+export const getLastDateOfMonth = (year, month) => { // month: 1 ~ 12
+	let lastObj = new Date(year, month, 0);
+	let lastDate = lastObj.getDate();
+
+	return lastDate;
+}
+
+
+
+
+const arr = [
+  {name: 'apple', price : 1000}, 
+  {name: 'banana', price : 2000},
+  {name: 'apple', price: 3000}
+];
+
+function isApple(element)  {
+  if(element.name === 'apple')  {
+    return true;
+  }
+}
+
+const apple = arr.find(isApple);
+// document.writeln(apple.name); // apple
+// document.writeln(apple.price); // 1000
+
+
+
+export const showWritePopup = () => {
+	document.querySelector('.write-popup').classList.add('is-active');
+}
+export const hideWritePopup = () => {
+	document.querySelector('.write-popup').classList.remove('is-active');
 }

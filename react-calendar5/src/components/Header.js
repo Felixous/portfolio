@@ -1,6 +1,10 @@
 import React from 'react';
+import { showWritePopup } from '../resources/js/ui';
 
 const Header = () => {
+	const onClickAddEvent = () => {
+		showWritePopup();
+	}
 	return (
 		<header>
 			<div className="inner-frame">
@@ -13,7 +17,7 @@ const Header = () => {
 						<li><a href="#">Week</a></li>
 						<li className="is-active"><a href="#">Month</a></li>
 					</ul>
-					<button type="button" className="btn btn-add-event"></button>
+					<button type="button" className="btn btn-add-event" onClick={onClickAddEvent}></button>
 				</div>
 			</div>
 		</header>
