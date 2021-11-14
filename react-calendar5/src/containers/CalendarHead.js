@@ -6,17 +6,16 @@ import CalendarHead from '../components/CalendarHead';
 
 const mapReduxStateToReactProps = (state) => {
 	return {
-		year: state.year,
-		month: state.month
+		view: state.view
 	}
 }
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
-		onClickPrevMonth: () => {
-			dispatch({ type: 'PREV_MONTH' });
+		viewPrevMonth: () => {
+			dispatch({ type: 'VIEW_PREV_MONTH' });
 		},
-		onClickNextMonth: () => {
-			dispatch({ type: 'NEXT_MONTH' });
+		viewNextMonth: () => {
+			dispatch({ type: 'VIEW_NEXT_MONTH' });
 		}
 	}
 }

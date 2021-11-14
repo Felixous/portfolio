@@ -3,6 +3,7 @@ import WritePopup from "../components/WritePopup";
 
 const mapReduxStateToReactProps = (state) => {
 	return {
+		selected: state.selected,
 		categories: state.categories,
 		events: state.events
 	}
@@ -10,9 +11,26 @@ const mapReduxStateToReactProps = (state) => {
 
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
+		changeSelected: (year, month, date, event) => {
+			dispatch({
+				type: 'CHANGE_SELECTED',
+				data: {
+					year,
+					month,
+					date,
+					event
+				}
+			})
+		},
 		addEvent: (newEvent) => {
 			dispatch({
 				type: 'ADD_EVENT',
+				data: newEvent
+			})
+		},
+		updateEvent: (newEvent) => {
+			dispatch({
+				type: 'UPDATE_EVENT',
 				data: newEvent
 			})
 		}

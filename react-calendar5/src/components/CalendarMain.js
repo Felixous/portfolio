@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CalendarCell from './CalendarCell';
 
-const CalendarMain = ({ year, month, date, events }) => {
+const CalendarMain = ({ view, categories, events, changeSelected }) => {
+	const { year, month, date } = view;
 
 	const makeTable = useCallback(() => {
 		let dateMatrix = getDateMatrix(year, month, date, events);
@@ -13,42 +14,21 @@ const CalendarMain = ({ year, month, date, events }) => {
 
 		dateMatrix.map((weekItem, weekIndex) => {
 			weekItem.map((dayItem, dayIndex) => {
-				days.push(<CalendarCell key={dayItem.year + '-' + dayItem.month + '-' + dayItem.date} cellInfo={dayItem} />)
+				days.push(
+					<CalendarCell 
+						key={dayItem.year + '-' + dayItem.month + '-' + dayItem.date} 
+						cellInfo={dayItem} 
+						categories={categories} 
+						changeSelected={changeSelected}
+					/>
+				)
 			})
 			weeks.push(<tr key={weekIndex + '번째주'}>{days}</tr>);
 			days = [];
 		})
 
 		return weeks;
-
-	}, [year, month, date, events])
-
-	// const makeTable = useCallback(() => {
-	// 	let today = new Date();
-	// 	let data = getDateMatrix(year, month, date);
-	// 	let result = [];
-	// 	data.map((v, weekindex) => {
-	// 		let innerArray = [];
-	// 		v.map((v, dateindex) => {
-	// 			let name = null;
-	// 			let isOtherMonth = v.month !== month;
-	// 			if (isOtherMonth) name = 'other-month';
-	// 			if (today.getFullYear() === v.year && today.getMonth() + 1 === v.month) {
-	// 				let todayWeekNum = getTodayWeekNum();
-	// 				let isThisWeek = weekindex === todayWeekNum;
-	// 				let isToday = v.date === (new Date()).getDate();
-	// 				if (isThisWeek) name = 'this-week';
-	// 				if (isToday) name += ' today';
-	// 			}
-	// 			let td = <td className={name}>{v.date}</td>;
-	// 			innerArray.push(td);
-
-	// 		})
-	// 		let tr = <tr>{innerArray}</tr>;
-	// 		result.push(tr);
-	// 	})
-	// 	return result;
-	// }, [year, month, date]);
+	}, [year, month, date, events]);
 
 	return (
 		<div className="calendar-main">

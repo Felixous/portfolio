@@ -48,12 +48,12 @@ export const getDateMatrix = (year, month, date, events) => { // 2021, 11, 20
 			year: temp.getFullYear(),
 			month: temp.getMonth() + 1,
 			date: temp.getDate(),
-			classNameList: [],
+			classNameList: ['this-month'],
 			events: [],
 		}
-		if (todayYear === year && todayMonth === month && todayDate === i+1) {
-			obj.classNameList.push('today')
-		}
+		// if (todayYear === year && todayMonth === month && todayDate === i+1) {
+		// 	obj.classNameList.push('today')
+		// }
 		array.push({...obj});
 	}
 
@@ -78,11 +78,25 @@ export const getDateMatrix = (year, month, date, events) => { // 2021, 11, 20
 		}
 	}
 
+	// 오늘 클래스 추가
+	for (let i=0; i<array.length; i++) {
+		if (todayYear === array[i].year && todayMonth === array[i].month && todayDate === array[i].date) {
+			array[i].classNameList.push('today');
+		}
+	}
+
 	// 이벤트 추가
 	for (let i=0; i<array.length; i++) {
 		for (let j=0; j<events.length; j++) {
 			if (array[i].year === events[j].year 
-				&& array[i].month === events[j].month 
+				&& array[i].month === events[j].month
+				&& array[i].date === events[j].date) {
+				array[i].events.push({...events[j]})
+			} else if (events[j].repeat === 'yearly'
+				&& array[i].month === events[j].month
+				&& array[i].date === events[j].date) {
+				array[i].events.push({...events[j]})
+			} else if (events[j].repeat === 'monthly'
 				&& array[i].date === events[j].date) {
 				array[i].events.push({...events[j]})
 			}

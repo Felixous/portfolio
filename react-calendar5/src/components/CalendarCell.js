@@ -1,23 +1,49 @@
 import React from 'react';
+import { showWritePopup } from '../resources/js/ui';
 
-const CalendarCell = ({ cellInfo }) => {
+const CalendarCell = ({ cellInfo, categories, changeSelected }) => {
 	const { year, month, date, classNameList, events } = cellInfo;
 	const className = classNameList.join(' ');
-	
+
+	// console.log(events);
+
 	const makeEventList = () => {
 		let list = [];
 		events.map((item, index) => {
-			list.push(<li key={index}>{item.text}</li>)
+			let category = item.category;
+			let color = categories.find((v) => v.name === category).color;
+			list.push(
+				<li key={index}>
+					<div className={'event-item ' + color} onClick={onClickEvent} data-event-id={item.id}>{item.text}</div>
+				</li>
+			)
 		})
 		return list;
 	}
 
+	const onClickCell = () => {
+		if (classNameList.indexOf('other-month') >= 0) return;
+		changeSelected(year, month, date);
+		showWritePopup();
+	}
+
+	const onClickEvent = (e) => {
+		e.stopPropagation();
+		if (classNameList.indexOf('other-month') >= 0) return;
+		let eventId = Number(e.target.dataset.eventId);
+		let event = events.find((v) => v.id === eventId);
+		changeSelected(year, month, date, event);
+		showWritePopup();
+	}
+
 	return (
-		<td className={className}>
+		<td className={className} onClick={onClickCell}>
 			<div className="date-num">{date}</div>
-			<ul className="event-list">
-				{makeEventList()}
-			</ul>
+			<div className="scroller">
+				<ul className="event-list">
+					{makeEventList()}
+				</ul>
+			</div>
 		</td>
 	);
 };

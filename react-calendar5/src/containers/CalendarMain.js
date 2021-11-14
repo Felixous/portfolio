@@ -4,21 +4,25 @@ import CalendarMain from '../components/CalendarMain';
 
 const mapReduxStateToReactProps = (state) => {
 	return {
-		year: state.year,
-		month: state.month,
-		date: state.date,
+		view: state.view,
+		categories: state.categories,
 		events: state.events
 	}
 }
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
-		onClickPrevMonth: () => {
-			dispatch({ type: 'PREV_MONTH' });
-		},
-		onClickNextMonth: () => {
-			dispatch({ type: 'NEXT_MONTH' });
+		changeSelected: (year, month, date, event) => {
+			dispatch({
+				type: 'CHANGE_SELECTED',
+				data: {
+					year,
+					month,
+					date,
+					event
+				}
+			})
 		}
 	}
 }
 
-export default connect(mapReduxStateToReactProps, null)(CalendarMain);
+export default connect(mapReduxStateToReactProps, mapReduxDispatchToReactProps)(CalendarMain);

@@ -1,23 +1,50 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, showWritePopup } from '../resources/js/ui';
 
-const WritePopup = ({ events, categories, addEvent }) => {
+const WritePopup = ({ selected, categories, addEvent }) => {
 
-	useEffect(() => {
-		showWritePopup();
-	}, [])
+	console.log('=======================================================');
+	// console.log('쓰기팝업 실행!! >>> ', selected);
 
+	let mode = !selected.event ? 'create' : 'update';
+
+	const [ year, setYear ] = useState(selected.year);
+	const [ month, setMonth ] = useState(selected.month);
+	const [ date, setDate ] = useState(selected.date);
+	const [ event, setEvent ] = useState(selected.event);
 	const [ text, setText ] = useState('');
-	const [ year, setYear ] = useState(new Date().getFullYear());
-	const [ month, setMonth ] = useState(new Date().getMonth() + 1);
-	const [ date, setDate ] = useState(new Date().getDate());
-	const [ selectedRadio, setSelectedRadio ] = useState(categories[0].name);
+	const [ category, setCategory ] = useState('home'); // 'home', 'friends', 'works', 'etc'
+	const [ repeat, setRepeat ] = useState('none'); // '', 'monthly', 'yearly'
 
 	const submitBtn = useRef();
 	const clearBtn = useRef();
 	const textInput = useRef();
-	
+
+	useEffect(() => {
+		// console.log('유즈이펙트 selected.event >>> ', selected.event);
+
+		if (mode === 'create') {
+			console.log('크리에이트 모드인 경우');
+			setYear(selected.year);
+			setMonth(selected.month);
+			setDate(selected.date);
+			setText('');
+			setCategory('home');
+			setRepeat('none');
+		}
+		if (mode === 'update') {
+			console.log('업데이트 모드인 경우');
+			setYear(selected.event.year);
+			setMonth(selected.event.month);
+			setDate(selected.event.date);
+			setText(selected.event.text);
+			setCategory(selected.event.category);
+			setRepeat(selected.event.repeat);
+		}
+	}, [selected]);
+
 	const onChangeText = (e) => {
+		// console.log('온체인지텍스트!!!!!!');
 		setText(e.target.value);
 		if (e.target.value.length > 0) {
 			clearBtn.current.classList.add('is-active');
@@ -41,13 +68,8 @@ const WritePopup = ({ events, categories, addEvent }) => {
 
 	const onClickSave = () => {
 		if (text.length === 0) return;
-		console.dir(submitBtn.current)
 		submitBtn.current.click();
 		hideWritePopup();
-		setText('');
-		setYear(new Date().getFullYear());
-		setMonth(new Date().getMonth() + 1);
-		setDate(new Date().getDate());
 	}
 	
 	const onClickCancel = () => {
@@ -55,7 +77,7 @@ const WritePopup = ({ events, categories, addEvent }) => {
 	}
 
 	const dotMaker = () => {
-		const item = categories.find((v) => v.name === selectedRadio);
+		const item = categories.find((v) => v.name === category);
 		return <span className={'dot ' + item.color}></span>;
 	}
 
@@ -83,7 +105,7 @@ const WritePopup = ({ events, categories, addEvent }) => {
 		return options;
 	}
 
-	const dateOptionMaker = () => {
+	const dateOptionMaker = useCallback(() => {
 		let options = [];
 
 		for (let i=1; i<=getLastDateOfMonth(year, month); i++) {
@@ -91,7 +113,7 @@ const WritePopup = ({ events, categories, addEvent }) => {
 		}
 		
 		return options;
-	}
+	}, [year, month, date]);
 
 	const radioMaker = () => {
 		let radios = [];
@@ -104,7 +126,7 @@ const WritePopup = ({ events, categories, addEvent }) => {
 						name="category" 
 						id={'category-'+item.name} 
 						value={item.name} 
-						checked={selectedRadio === item.name} 
+						checked={category === item.name} 
 						onChange={onChangeRadio}
 					/>
 					<label htmlFor={'category-'+item.name} className={item.color}>
@@ -117,7 +139,7 @@ const WritePopup = ({ events, categories, addEvent }) => {
 	}
 
 	const onChangeRadio = (e) => {
-		setSelectedRadio(e.target.value);
+		setCategory(e.target.value);
 	}
 
 	const textClear = () => {
@@ -128,13 +150,19 @@ const WritePopup = ({ events, categories, addEvent }) => {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		let newEvent = {
-			id: Math.max.apply(Math, events.map(function(o) { return o.id; })) + 1,
+			id: null, // id는 reducer에서 처리
 			year: year,
 			month: month,
 			date: date,
-			text: text
+			text: text,
+			category: category,
+			repeat: repeat
 		}
 		addEvent(newEvent);
+	}
+
+	const onChangeRepeat = (e) => {
+		setRepeat(e.target.value);
 	}
 
 	return (
@@ -168,6 +196,22 @@ const WritePopup = ({ events, categories, addEvent }) => {
 								<select className="event-date" onChange={onChangeDate} value={date}>
 									{dateOptionMaker()}
 								</select>
+							</li>
+							<li className="repeats">
+								<ul className="toggle-list">
+									<li>
+										<input type="radio" id="repeat-none" name="repeat" value="none" checked={repeat === 'none'} onChange={onChangeRepeat} />
+										<label htmlFor="repeat-none">None</label>
+									</li>
+									<li>
+										<input type="radio" id="repeat-monthly" name="repeat" value="monthly" checked={repeat === 'monthly'} onChange={onChangeRepeat} />
+										<label htmlFor="repeat-monthly">Monthly</label>
+									</li>
+									<li>
+										<input type="radio" id="repeat-yearly" name="repeat" value="yearly" checked={repeat === 'yearly'} onChange={onChangeRepeat} />
+										<label htmlFor="repeat-yearly">Yearly</label>
+									</li>
+								</ul>
 							</li>
 							<li className="categories">
 								{radioMaker()}
