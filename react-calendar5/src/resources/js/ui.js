@@ -201,6 +201,25 @@ export const getMonthFromShortName = (number) => { // 1 ~ 12
 	}
 }
 
+export const getFullDayName = (number) => { // 0 ~ 6
+	switch (number) {
+		case 0:
+			return 'Sunday';
+		case 1:
+			return 'Monday';
+		case 2:
+			return 'Tuesday';
+		case 3:
+			return 'Wednesday';
+		case 4:
+			return 'Thursday';
+		case 5:
+			return 'Friday';
+		case 6:
+			return 'Saturday';
+	}
+}
+
 export const getTodayWeekNum = () => {
 	let today = new Date();
 	let firstDay = (new Date(today.getFullYear(), today.getMonth())).getDay();
@@ -216,24 +235,9 @@ export const getLastDateOfMonth = (year, month) => { // month: 1 ~ 12
 }
 
 
-
-
-const arr = [
-  {name: 'apple', price : 1000}, 
-  {name: 'banana', price : 2000},
-  {name: 'apple', price: 3000}
-];
-
-function isApple(element)  {
-  if(element.name === 'apple')  {
-    return true;
-  }
+export const textCapitalize = (str) => {
+	return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-const apple = arr.find(isApple);
-// document.writeln(apple.name); // apple
-// document.writeln(apple.price); // 1000
-
 
 
 export const showWritePopup = () => {
@@ -242,3 +246,18 @@ export const showWritePopup = () => {
 export const hideWritePopup = () => {
 	document.querySelector('.write-popup').classList.remove('is-active');
 }
+
+export const showReadPopup = () => {
+	document.querySelector('.read-popup').classList.add('is-active');
+}
+export const hideReadPopup = () => {
+	document.querySelector('.read-popup').classList.remove('is-active');
+}
+
+export const showDeletePopup = () => {
+	document.querySelector('.delete-popup').classList.add('is-active');
+}
+export const hideDeletePopup = () => {
+	document.querySelector('.delete-popup').classList.remove('is-active');
+}
+

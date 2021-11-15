@@ -325,7 +325,7 @@ export default createStore((state = initialState, action) => {
 					}
 				]
 			}
-		case 'UPDATE_EVENT':
+		case 'UPDATE_EVENT': {
 			let eventObj = state.events.find((o) => o.id === action.data.id);
 			let eventIndex = state.events.indexOf(eventObj);
 			// console.log('기존 이벤트 객체는 >>', eventObj, eventIndex);
@@ -338,6 +338,18 @@ export default createStore((state = initialState, action) => {
 					...state.events.slice(eventIndex + 1, state.events.length)
 				]
 			}
+		}
+		case 'DELETE_EVENT': {
+			let eventObj = state.events.find((o) => o.id === action.data.id);
+			let eventIndex = state.events.indexOf(eventObj);
+			return {
+				...state,
+				events: [
+					...state.events.slice(0, eventIndex),
+					...state.events.slice(eventIndex + 1, state.events.length)
+				]
+			}
+		}
 		case 'CHANGE_SELECTED':
 			return {
 				...state,

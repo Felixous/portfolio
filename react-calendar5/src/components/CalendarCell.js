@@ -1,5 +1,5 @@
 import React from 'react';
-import { showWritePopup } from '../resources/js/ui';
+import { showReadPopup, showWritePopup } from '../resources/js/ui';
 
 const CalendarCell = ({ cellInfo, categories, changeSelected }) => {
 	const { year, month, date, classNameList, events } = cellInfo;
@@ -31,7 +31,7 @@ const CalendarCell = ({ cellInfo, categories, changeSelected }) => {
 		let eventId = Number(e.target.dataset.eventId);
 		let event = events.find((v) => v.id === eventId);
 		changeSelected(year, month, date, event);
-		showWritePopup();
+		showReadPopup();
 	}
 
 	return (
