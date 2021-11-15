@@ -10,13 +10,14 @@ const mapReduxStateToReactProps = (state) => {
 
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
-		onClickAddEvent: (selectedYear, selectedMonth, selectedDate) => {
+		changeSelected: (year, month, date, event) => {
 			dispatch({
-				type: 'SELECT_DATE',
+				type: 'CHANGE_SELECTED',
 				data: {
-					selectedYear: selectedYear,
-					selectedMonth: selectedMonth,
-					selectedDate: selectedDate
+					year,
+					month,
+					date,
+					event
 				}
 			})
 		}

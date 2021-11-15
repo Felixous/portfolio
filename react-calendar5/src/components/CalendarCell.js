@@ -5,8 +5,6 @@ const CalendarCell = ({ cellInfo, categories, changeSelected }) => {
 	const { year, month, date, classNameList, events } = cellInfo;
 	const className = classNameList.join(' ');
 
-	// console.log(events);
-
 	const makeEventList = () => {
 		let list = [];
 		events.map((item, index) => {

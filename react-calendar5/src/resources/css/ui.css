@@ -85,6 +85,7 @@ table.tbl-calendar tbody td .date-num { padding: 4px 10px; text-align: right; }
 table.tbl-calendar tbody td.today .date-num { color: #fff; background: #559af7; }
 table.tbl-calendar tbody td ul.event-list {}
 table.tbl-calendar tbody td ul.event-list > li { padding: 1px 1px 0; }
+table.tbl-calendar tbody td.this-month ul.event-list > li:hover { opacity: 0.7; }
 table.tbl-calendar tbody td.other-month .date-num { opacity: 0.5; }
 table.tbl-calendar tbody td .event-item { overflow: hidden; text-overflow: ellipsis; padding: 0 4px; border: 2px solid #999da6; font-size: 13px; white-space: nowrap; background: #f5f5f5; }
 table.tbl-calendar tbody td .event-item.blue { border-color: #5383ec; background: #edf2fc; }

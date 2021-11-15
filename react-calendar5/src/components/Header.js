@@ -1,10 +1,10 @@
 import React from 'react';
 import { showWritePopup } from '../resources/js/ui';
 
-const Header = ({ onClickAddEvent }) => {
+const Header = ({ changeSelected }) => {
 	const onClickPlus = () => {
 		let today = new Date();
-		onClickAddEvent(today.getFullYear(), today.getMonth() + 1, today.getDate());
+		changeSelected(today.getFullYear(), today.getMonth() + 1, today.getDate());
 		showWritePopup();
 	}
 	return (

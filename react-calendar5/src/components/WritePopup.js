@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, showWritePopup } from '../resources/js/ui';
 
-const WritePopup = ({ selected, categories, addEvent }) => {
+const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
 
-	console.log('=======================================================');
+	// console.log('=======================================================');
 	// console.log('쓰기팝업 실행!! >>> ', selected);
 
 	let mode = !selected.event ? 'create' : 'update';
@@ -24,7 +24,7 @@ const WritePopup = ({ selected, categories, addEvent }) => {
 		// console.log('유즈이펙트 selected.event >>> ', selected.event);
 
 		if (mode === 'create') {
-			console.log('크리에이트 모드인 경우');
+			// console.log('크리에이트 모드인 경우');
 			setYear(selected.year);
 			setMonth(selected.month);
 			setDate(selected.date);
@@ -33,7 +33,7 @@ const WritePopup = ({ selected, categories, addEvent }) => {
 			setRepeat('none');
 		}
 		if (mode === 'update') {
-			console.log('업데이트 모드인 경우');
+			// console.log('업데이트 모드인 경우');
 			setYear(selected.event.year);
 			setMonth(selected.event.month);
 			setDate(selected.event.date);
@@ -68,8 +68,8 @@ const WritePopup = ({ selected, categories, addEvent }) => {
 
 	const onClickSave = () => {
 		if (text.length === 0) return;
-		submitBtn.current.click();
 		hideWritePopup();
+		submitBtn.current.click();
 	}
 	
 	const onClickCancel = () => {
@@ -149,16 +149,30 @@ const WritePopup = ({ selected, categories, addEvent }) => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		let newEvent = {
-			id: null, // id는 reducer에서 처리
-			year: year,
-			month: month,
-			date: date,
-			text: text,
-			category: category,
-			repeat: repeat
+		let newEvent;
+		if (mode === 'create') {
+			newEvent = {
+				id: null, // id는 reducer에서 처리
+				year: year,
+				month: month,
+				date: date,
+				text: text,
+				category: category,
+				repeat: repeat
+			}
+			addEvent(newEvent);
+		} else if (mode === 'update') {
+			newEvent = {
+				id: selected.event.id, // id는 reducer에서 처리
+				year: year,
+				month: month,
+				date: date,
+				text: text,
+				category: category,
+				repeat: repeat
+			}
+			updateEvent(newEvent);
 		}
-		addEvent(newEvent);
 	}
 
 	const onChangeRepeat = (e) => {
