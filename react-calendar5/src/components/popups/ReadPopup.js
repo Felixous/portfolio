@@ -27,7 +27,12 @@ const ReadPopup = ({ view, categories, event }) => {
 	const categoryMaker = () => {
 		if (!event) return;
 		let category = event.category;
-		return <div className="category">{textCapitalize(category)}</div>;
+		return (
+			<div className="main">
+				<span className="icon icon-category"></span>
+				<div className="category">{textCapitalize(category)}</div>
+			</div>
+		);
 	}
 	const repeatMaker = () => {
 		if (!event) return;
@@ -36,9 +41,19 @@ const ReadPopup = ({ view, categories, event }) => {
 		if (repeat === 'none') {
 			result = null;
 		} else if (repeat === 'monthly') {
-			result = <div className="repeats">Repeats every month</div>;
+			result = (
+				<div className="sub">
+					<span className="icon icon-repeat"></span>
+					<div className="repeats">Repeats every month</div>
+				</div>
+			);
 		} else if (repeat === 'yearly') {
-			result = <div className="repeats">Repeats every year</div>;
+			result = (
+				<div className="sub">
+					<span className="icon icon-repeat"></span>
+					<div className="repeats">Repeats every year</div>
+				</div>
+			);
 		}
 		return result;
 	}
@@ -60,11 +75,33 @@ const ReadPopup = ({ view, categories, event }) => {
 			<div className="popup-layout">
 
 				<div className="contents">
-					{dotMaker()}
-					{titleMaker()}
-					{descMaker()}
-					{categoryMaker()}
-					{repeatMaker()}
+					
+					
+					
+					
+					
+					
+
+					<div className="desc-wrap">
+
+						<div className="conts">
+							<div className="main">
+								{dotMaker()}
+								{titleMaker()}
+							</div>
+							<div className="sub">
+								{descMaker()}
+							</div>
+						</div>
+
+						<div className="conts">
+							{categoryMaker()}
+							{repeatMaker()}
+						</div>
+
+					</div>
+
+
 				</div>
 
 				<div className="bottom">

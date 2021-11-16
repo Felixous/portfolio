@@ -47,6 +47,7 @@ a:hover, .btn:hover { opacity: 0.7; }
 
 /* icon */
 .icon-repeat { width: 22px; height: 22px; background: url('../images/icons/icon-repeat.png') no-repeat center; background-size: 100%; opacity: 0.6; }
+.icon-category { width: 22px; height: 22px; background: url('../images/icons/icon-category.png') no-repeat center; background-size: 100%; opacity: 1; }
 
 
 /* layout */
@@ -239,7 +240,7 @@ ul.toggle-list > li input:checked ~ label { opacity: 1; color: #303030; backgrou
 .read-popup .popup-dim { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); }
 .read-popup .popup-layout { overflow: hidden; position: absolute; top: 50%; left: 50%; width: 400px; transform: translate(-50%, -50%); border-radius: 12px; background: #fff; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
 
-.read-popup .popup-layout .contents { padding: 20px; }
+.read-popup .popup-layout .contents { padding: 15px 0 20px 10px; }
 .read-popup .popup-layout .bottom { padding: 0 10px; border-top: 1px solid #dadada; box-sizing: border-box; }
 .read-popup .popup-layout .bottom .btn-edit { float: left; height: 44px; padding: 0 10px 2px; font-size: 14px; font-weight: 400; }
 .read-popup .popup-layout .bottom .btn-delete { float: right; height: 44px; padding: 0 10px 2px; font-size: 14px; font-weight: 400; color: #c92b1e; }
@@ -269,3 +270,17 @@ ul.toggle-list > li input:checked ~ label { opacity: 1; color: #303030; backgrou
 
 
 
+.desc-wrap { padding-left: 20px; }
+.desc-wrap > .conts { padding: 15px 0; }
+.desc-wrap > .conts:not(:first-child) { padding-top: 15px; padding-bottom: 10px; border-top: 1px solid #dcdcdc; }
+.desc-wrap > .conts > * { padding-left: 30px; }
+.desc-wrap > .conts .main { position: relative; }
+.desc-wrap > .conts .main + .sub { margin-top: 20px; }
+.desc-wrap > .conts .main .dot { position: absolute; left: 0; top: 50%; transform: translateY(-50%);  }
+.desc-wrap > .conts .main .title { font-size: 21px; font-weight: bold; }
+.desc-wrap > .conts .main .icon { position: absolute; left: 0; top: 4px; }
+.desc-wrap > .conts .sub { position: relative; }
+.desc-wrap .icon { position: absolute; left: 0; top: 4px; width: 20px; height: 20px; }
+.desc-wrap > .conts .sub .desc { color: #999; }
+.desc-wrap > .conts .sub .duration + * { margin-top: 10px; }
+.desc-wrap > .conts .sub .explain { color: #999; }
