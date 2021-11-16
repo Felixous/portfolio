@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { hideDeletePopup, hideReadPopup } from '../resources/js/ui';
+import { hideDeletePopup, hideReadPopup } from '../../resources/js/ui';
 
 const DeletePopup = ({ event, deleteEvent }) => {
 

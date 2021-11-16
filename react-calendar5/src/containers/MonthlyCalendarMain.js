@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import CalendarMain from '../components/CalendarMain';
+import MonthlyCalendarMain from '../components/MonthlyCalendarMain';
 
 const mapReduxStateToReactProps = (state) => {
 	return {
@@ -25,4 +25,4 @@ const mapReduxDispatchToReactProps = (dispatch) => {
 	}
 }
 
-export default connect(mapReduxStateToReactProps, mapReduxDispatchToReactProps)(CalendarMain);
+export default connect(mapReduxStateToReactProps, mapReduxDispatchToReactProps)(MonthlyCalendarMain);

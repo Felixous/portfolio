@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFullDayName, getFullMonthName, hideReadPopup, showDeletePopup, showWritePopup, textCapitalize } from '../resources/js/ui';
+import { getFullDayName, getFullMonthName, hideReadPopup, showDeletePopup, showWritePopup, textCapitalize } from '../../resources/js/ui';
 
 const ReadPopup = ({ view, categories, event }) => {
 	// console.log('리드팝업 =============');

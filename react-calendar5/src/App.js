@@ -1,16 +1,25 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import Header from './containers/Header';
-import Calendar from './components/Calendar';
-import ReadPopup from './containers/ReadPopup';
-import WritePopup from './containers/WritePopup';
-import DeletePopup from './containers/DeletePopup';
+import WeeklyCalendar from './containers/WeeklyCalendar';
+import MonthlyCalendar from './containers/MonthlyCalendar';
+import ReadPopup from './containers/popups/ReadPopup';
+import WritePopup from './containers/popups/WritePopup';
+import DeletePopup from './containers/popups/DeletePopup';
+
 
 const App = () => {
 	return (
 		<div className="layout">
 			<Header />
-			<Calendar />
+			<main>
+				<Routes>
+					<Route exact path="/" element={<MonthlyCalendar />} />
+					<Route path="/week" element={<WeeklyCalendar />} />
+					{/* <Route path="/list" element={<div>List</div>} /> */}
+				</Routes>
+			</main>
 			<ReadPopup />
 			<DeletePopup />
 			<WritePopup />

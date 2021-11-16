@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import DeletePopup from '../components/DeletePopup';
+import DeletePopup from '../../components/popups/DeletePopup';
 
 const mapReduxStateToReactProps = (state) => {
 	return {

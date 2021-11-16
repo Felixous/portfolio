@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import ReadPopup from "../components/ReadPopup";
+import ReadPopup from "../../components/popups/ReadPopup";
 
 const mapReduxStateToReactProps = (state) => {
 	return {

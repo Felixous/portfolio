@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import WritePopup from "../components/WritePopup";
+
+import WritePopup from "../../components/popups/WritePopup";
 
 const mapReduxStateToReactProps = (state) => {
 	return {

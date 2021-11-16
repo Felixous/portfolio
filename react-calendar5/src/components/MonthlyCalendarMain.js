@@ -1,14 +1,13 @@
-import React, { useState, useMemo, useCallback } from 'react';
-import { getDateMatrix, getTodayWeekNum } from '../resources/js/ui';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback } from 'react';
+import { getMonthlyMatrix } from '../resources/js/ui';
 
 import CalendarCell from './CalendarCell';
 
-const CalendarMain = ({ view, categories, events, changeSelected }) => {
+const MonthlyCalendarMain = ({ view, categories, events, changeSelected }) => {
 	const { year, month, date } = view;
 
 	const makeTable = useCallback(() => {
-		let dateMatrix = getDateMatrix(year, month, date, events);
+		let dateMatrix = getMonthlyMatrix(year, month, date, events);
 		let weeks = [];
 		let days = [];
 
@@ -32,7 +31,7 @@ const CalendarMain = ({ view, categories, events, changeSelected }) => {
 
 	return (
 		<div className="calendar-main">
-			<table className="tbl-calendar">
+			<table className="tbl-monthly-calendar">
 				<caption>테이블</caption>
 				<colgroup>
 					<col />
@@ -62,4 +61,4 @@ const CalendarMain = ({ view, categories, events, changeSelected }) => {
 	);
 };
 
-export default CalendarMain;
+export default MonthlyCalendarMain;

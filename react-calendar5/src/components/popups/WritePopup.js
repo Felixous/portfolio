@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, textCapitalize } from '../resources/js/ui';
+import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, textCapitalize } from '../../resources/js/ui';
 
 const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
 

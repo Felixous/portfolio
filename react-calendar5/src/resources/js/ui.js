@@ -8,7 +8,7 @@ console.log('===== ui.js');
 // 	console.log('=== 윈도우 로드!');
 // })
 
-export const getDateMatrix = (year, month, date, events) => { // 2021, 11, 20 
+export const getMonthlyMatrix = (year, month, date, events) => { // 2021, 11, 20 
 
 	let todayObj = new Date();
 	let todayYear = todayObj.getFullYear();
@@ -114,6 +114,56 @@ export const getDateMatrix = (year, month, date, events) => { // 2021, 11, 20
 
 }
 
+export const getWeeklyMatrix = (year, month, date, events) => {
+
+	let todayObj = new Date();
+	let todayYear = todayObj.getFullYear();
+	let todayMonth = todayObj.getMonth() + 1;
+	let todayDate = todayObj.getDate();
+
+	let dateObj = new Date(year + '-' + month + '-' + date);
+	let day = dateObj.getDay();
+
+	let result = [];
+
+	for (let i=-(day); i<7-day; i++) {
+		let tempObj = new Date(dateObj);
+		tempObj.setDate(date + i);
+		let obj = {
+			year: tempObj.getFullYear(),
+			month: tempObj.getMonth() + 1,
+			date: tempObj.getDate(),
+			day: tempObj.getDay(),
+			classNameList: [],
+			events: [],
+		}
+		events.forEach((o, i) => {
+			if ((obj.year === o.year && obj.month === o.month && obj.date === o.date)
+				|| (o.repeat === 'yearly' && obj.month === o.month && obj.date === o.date)
+				|| (o.repeat === 'monthly' && obj.date === o.date)) {
+				obj.events.push({...o});
+			}
+		})
+
+		// 주말이면
+		if (i === -(day) || i === 6-day) {
+			obj.classNameList.push('weekend')
+		}
+		// 일요일이면
+		if (i === -(day)) {
+			obj.classNameList.push('holiday')
+		}
+		// 오늘이면
+		if (todayYear === obj.year && todayMonth === obj.month && todayDate === obj.date) {
+			obj.classNameList.push('today');
+		}
+		result.push(obj);
+	}
+
+	// console.log(result);
+	return result;
+}
+
 export const getFullMonthName = (number) => { // 1 ~ 12
 	switch (number) {
 		case 1:
@@ -140,6 +190,8 @@ export const getFullMonthName = (number) => { // 1 ~ 12
 			return 'November';
 		case 12:
 			return 'December';
+		default:
+			return '';
 	}
 }
 
@@ -169,11 +221,13 @@ export const getShortMonthName = (number) => { // 1 ~ 12
 			return 'Nov';
 		case 12:
 			return 'Dec';
+		default:
+			return '';
 	}
 }
 
-export const getMonthFromShortName = (number) => { // 1 ~ 12
-	switch (number) {
+export const getMonthFromShortName = (str) => {
+	switch (str) {
 		case 'Jan':
 			return 1;
 		case 'Feb':
@@ -198,6 +252,29 @@ export const getMonthFromShortName = (number) => { // 1 ~ 12
 			return 11;
 		case 'Dec':
 			return 12;
+		default:
+			return '';
+	}
+}
+
+export const getShortDayName = (number) => { // 0 ~ 6
+	switch (number) {
+		case 0:
+			return 'Sun';
+		case 1:
+			return 'Mon';
+		case 2:
+			return 'Tue';
+		case 3:
+			return 'Wed';
+		case 4:
+			return 'Thu';
+		case 5:
+			return 'Fri';
+		case 6:
+			return 'Sat';
+		default:
+			return '';
 	}
 }
 
@@ -217,6 +294,8 @@ export const getFullDayName = (number) => { // 0 ~ 6
 			return 'Friday';
 		case 6:
 			return 'Saturday';
+		default:
+			return '';
 	}
 }
 
@@ -261,3 +340,14 @@ export const hideDeletePopup = () => {
 	document.querySelector('.delete-popup').classList.remove('is-active');
 }
 
+export const menuActivate = (index = 0) => { // 0 ~ 1
+	var ul = document.querySelector('header ul.menu-list');
+	var lis = Array.from(ul.childNodes);
+	lis.forEach((o, i) => {
+		if (i === index) {
+			o.classList.add('is-active');
+		} else {
+			o.classList.remove('is-active');
+		}
+	})
+}

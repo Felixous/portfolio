@@ -4,7 +4,8 @@ const initialState = {
 	view: {
 		year: new Date().getFullYear(),
 		month: new Date().getMonth() + 1,
-		date: new Date().getDate()
+		date: new Date().getDate(),
+		day: new Date().getDay()
 	},
 	selected: {
 		year: 0,
@@ -314,6 +315,34 @@ export default createStore((state = initialState, action) => {
 					}
 				}
 			}
+		case 'VIEW_PREV_WEEK': {
+			let { year, month, date, day } = state.view;
+			let obj = new Date(year + '-' + month + '-' + date);
+			obj.setDate(date - day - 7);
+			return {
+				...state,
+				view: {
+					year: obj.getFullYear(),
+					month: obj.getMonth() + 1,
+					date: obj.getDate(),
+					day: obj.getDay()
+				}
+			}
+		}
+		case 'VIEW_NEXT_WEEK': {
+			let { year, month, date, day } = state.view;
+			let obj = new Date(year + '-' + month + '-' + date);
+			obj.setDate(date - day + 7);
+			return {
+				...state,
+				view: {
+					year: obj.getFullYear(),
+					month: obj.getMonth() + 1,
+					date: obj.getDate(),
+					day: obj.getDay()
+				}
+			}
+		}
 		case 'ADD_EVENT':
 			return {
 				...state,
