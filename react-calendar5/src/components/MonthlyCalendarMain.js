@@ -1,20 +1,20 @@
 import React, { useCallback } from 'react';
 import { getMonthlyMatrix } from '../resources/js/ui';
 
-import CalendarCell from './CalendarCell';
+import MonthlyCalendarTd from './MonthlyCalendarTd';
 
 const MonthlyCalendarMain = ({ view, categories, events, changeSelected }) => {
-	const { year, month, date } = view;
-
+	
 	const makeTable = useCallback(() => {
+		let { year, month, date } = view;
 		let dateMatrix = getMonthlyMatrix(year, month, date, events);
 		let weeks = [];
 		let days = [];
 
-		dateMatrix.map((weekItem, weekIndex) => {
-			weekItem.map((dayItem, dayIndex) => {
+		dateMatrix.forEach((weekItem, weekIndex) => {
+			weekItem.forEach((dayItem, dayIndex) => {
 				days.push(
-					<CalendarCell 
+					<MonthlyCalendarTd 
 						key={dayItem.year + '-' + dayItem.month + '-' + dayItem.date} 
 						cellInfo={dayItem} 
 						categories={categories} 
@@ -27,7 +27,7 @@ const MonthlyCalendarMain = ({ view, categories, events, changeSelected }) => {
 		})
 
 		return weeks;
-	}, [year, month, date, events]);
+	}, [view, categories, events, changeSelected]);
 
 	return (
 		<div className="calendar-main">

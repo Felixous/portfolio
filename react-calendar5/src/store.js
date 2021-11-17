@@ -277,7 +277,30 @@ const initialState = {
 
 export default createStore((state = initialState, action) => {
 	switch (action.type) {
-		case 'VIEW_PREV_MONTH':
+		case 'CHANGE_VIEW': {
+			return {
+				...state,
+				view: {
+					year: action.data.year,
+					month: action.data.month,
+					date: action.data.date,
+					event: action.data.event
+				}
+			}
+		}
+		case 'VIEW_TODAY': {
+			let today = new Date();
+			return {
+				...state,
+				view: {
+					year: today.getFullYear(),
+					month: today.getMonth() + 1,
+					date: today.getDate(),
+					day: today.getDay()
+				}
+			}
+		}
+		case 'VIEW_PREV_MONTH': {
 			if (state.view.month === 1) {
 				return {
 					...state,
@@ -296,7 +319,8 @@ export default createStore((state = initialState, action) => {
 					}
 				}
 			}
-		case 'VIEW_NEXT_MONTH':
+		}
+		case 'VIEW_NEXT_MONTH': {
 			if (state.view.month === 12) {
 				return {
 					...state,
@@ -315,6 +339,7 @@ export default createStore((state = initialState, action) => {
 					}
 				}
 			}
+		}
 		case 'VIEW_PREV_WEEK': {
 			let { year, month, date, day } = state.view;
 			let obj = new Date(year + '-' + month + '-' + date);
@@ -343,7 +368,7 @@ export default createStore((state = initialState, action) => {
 				}
 			}
 		}
-		case 'ADD_EVENT':
+		case 'ADD_EVENT': {
 			return {
 				...state,
 				events: [
@@ -354,6 +379,7 @@ export default createStore((state = initialState, action) => {
 					}
 				]
 			}
+		}
 		case 'UPDATE_EVENT': {
 			let eventObj = state.events.find((o) => o.id === action.data.id);
 			let eventIndex = state.events.indexOf(eventObj);
@@ -379,7 +405,7 @@ export default createStore((state = initialState, action) => {
 				]
 			}
 		}
-		case 'CHANGE_SELECTED':
+		case 'CHANGE_SELECTED': {
 			return {
 				...state,
 				selected: {
@@ -389,8 +415,9 @@ export default createStore((state = initialState, action) => {
 					event: action.data.event
 				}
 			}
-		
-		default:
+		}
+		default: {
 			return state;
+		}
 	}
 }, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

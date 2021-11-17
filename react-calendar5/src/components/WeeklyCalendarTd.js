@@ -4,9 +4,19 @@ import { textCapitalize, showReadPopup } from '../resources/js/ui';
 const WeeklyCalendarTd = ({ categories, cellInfo, changeSelected }) => {
 	const { year, month, date, events } = cellInfo;
 
+	const onClickEvent = useCallback((e) => {
+		e.stopPropagation();
+		let target = e.target;
+		if (!target.classList.contains('event-item')) target = target.parentNode;
+		let eventId = Number(target.dataset.eventId);
+		let event = events.find((v) => v.id === eventId);
+		changeSelected(year, month, date, event);
+		showReadPopup();
+	}, [year, month, date, events, changeSelected])
+
 	const eventListMaker = useCallback(() => {
 		let lis = [];
-		events.map((o, i) => {
+		events.forEach((o, i) => {
 			let color = categories.find((v) => v.name === o.category).color;
 			lis.push(
 				<li key={i}>
@@ -18,18 +28,8 @@ const WeeklyCalendarTd = ({ categories, cellInfo, changeSelected }) => {
 			);
 		})
 		return lis;
-	}, [cellInfo]);
-
-	const onClickEvent = (e) => {
-		e.stopPropagation();
-		let target = e.target;
-		if (!target.classList.contains('event-item')) target = target.parentNode;
-		let eventId = Number(target.dataset.eventId);
-		let event = events.find((v) => v.id === eventId);
-		changeSelected(year, month, date, event);
-		showReadPopup();
-	}
-
+	}, [categories, events, onClickEvent]);
+	
 	return (
 		<td>
 			<div className="scroller">

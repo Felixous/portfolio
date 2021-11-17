@@ -12,6 +12,17 @@ const mapReduxStateToReactProps = (state) => {
 
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
+		changeView: (year, month, date, day) => {
+			dispatch({
+				type: 'CHANGE_VIEW',
+				data: {
+					year,
+					month,
+					date,
+					day
+				}
+			})
+		},
 		changeSelected: (year, month, date, event) => {
 			dispatch({
 				type: 'CHANGE_SELECTED',

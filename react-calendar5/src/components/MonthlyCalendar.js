@@ -1,20 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getFullMonthName, menuActivate } from '../resources/js/ui';
 
 import CalendarHead from './CalendarHead';
 import MonthlyCalendarMain from '../containers/MonthlyCalendarMain';
-import { menuActivate } from '../resources/js/ui';
 
-const MonthlyCalendar = ({ view, viewPrevMonth, viewNextMonth }) => {
+const MonthlyCalendar = ({ view, viewToday, viewPrevMonth, viewNextMonth }) => {
+
+	const [ title, setTitle ] = useState('');
+	const [ subtitle, setSubtitle ] = useState('');
 
 	useEffect(() => {
 		menuActivate(0);
 	}, []);
 
+	useEffect(() => {
+		setTitle(getFullMonthName(view.month) + ' ' + view.year);
+	}, [view])
+
 	return (
 		<div className="monthly-calendar">
 			<div className="inner-frame">
 
-				<CalendarHead view={view} clickPrev={viewPrevMonth} clickNext={viewNextMonth} />
+				<CalendarHead title={title} clickToday={viewToday} clickPrev={viewPrevMonth} clickNext={viewNextMonth} />
 
 				<MonthlyCalendarMain />
 

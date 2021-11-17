@@ -4,13 +4,13 @@ import { getShortDayName, getWeeklyMatrix } from '../resources/js/ui';
 import WeeklyCalendarTd from './WeeklyCalendarTd';
 
 const WeeklyCalendarMain = ({ view, categories, events, changeSelected }) => {
-	const { year, month, date } = view;
 
 	const makeTable = useCallback(() => {
+		let { year, month, date } = view;
 		let dateMatrix = getWeeklyMatrix(year, month, date, events);
 		let trs = [];
 
-		dateMatrix.map((o, i) => {
+		dateMatrix.forEach((o, i) => {
 			let className = o.classNameList.join(' ');
 			trs.push(
 				<tr key={o.year + '-' + o.month + '-' + o.date} className={className}>
@@ -24,8 +24,7 @@ const WeeklyCalendarMain = ({ view, categories, events, changeSelected }) => {
 		})
 		
 		return trs;
-
-	}, [year, month, date, events])
+	}, [view, categories, events, changeSelected])
 
 	return (
 		<div className="calendar-main">

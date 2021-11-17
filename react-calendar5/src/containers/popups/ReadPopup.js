@@ -10,10 +10,4 @@ const mapReduxStateToReactProps = (state) => {
 	}
 }
 
-const mapReduxDispatchToReactProps = (dispatch) => {
-	return {
-
-	}
-}
-
-export default connect(mapReduxStateToReactProps)(ReadPopup);
+export default connect(mapReduxStateToReactProps, null)(ReadPopup);

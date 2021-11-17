@@ -2,12 +2,6 @@ import { connect } from 'react-redux';
 
 import Header from '../components/Header';
 
-const mapReduxStateToReactProps = (state) => {
-	return {
-
-	}
-}
-
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
 		changeSelected: (year, month, date, event) => {

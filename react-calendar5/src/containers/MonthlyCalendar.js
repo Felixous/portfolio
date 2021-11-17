@@ -9,6 +9,9 @@ const mapReduxStateToReactProps = (state) => {
 }
 const mapReduxDispatchToReactProps = (dispatch) => {
 	return {
+		viewToday: () => {
+			dispatch({ type: 'VIEW_TODAY' });
+		},
 		viewPrevMonth: () => {
 			dispatch({ type: 'VIEW_PREV_MONTH' });
 		},

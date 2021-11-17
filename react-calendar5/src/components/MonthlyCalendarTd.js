@@ -1,13 +1,13 @@
 import React from 'react';
 import { showReadPopup, showWritePopup } from '../resources/js/ui';
 
-const CalendarCell = ({ cellInfo, categories, changeSelected }) => {
+const MonthlyCalendarTd = ({ cellInfo, categories, changeSelected }) => {
 	const { year, month, date, classNameList, events } = cellInfo;
 	const className = classNameList.join(' ');
 
 	const makeEventList = () => {
 		let list = [];
-		events.map((item, index) => {
+		events.forEach((item, index) => {
 			let category = item.category;
 			let color = categories.find((v) => v.name === category).color;
 			list.push(
@@ -46,4 +46,4 @@ const CalendarCell = ({ cellInfo, categories, changeSelected }) => {
 	);
 };
 
-export default CalendarCell;
+export default MonthlyCalendarTd;

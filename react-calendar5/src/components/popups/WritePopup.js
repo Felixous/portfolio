@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, textCapitalize } from '../../resources/js/ui';
 
-const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
+const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView }) => {
 
 	// console.log('=======================================================');
 	// console.log('쓰기팝업 실행!! >>> ', selected);
@@ -40,7 +40,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
 			setCategory(selected.event.category);
 			setRepeat(selected.event.repeat);
 		}
-	}, [selected]);
+	}, [mode, selected]);
 
 	const onChangeText = (e) => {
 		// console.log('온체인지텍스트!!!!!!');
@@ -91,6 +91,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
 			}
 			updateEvent(newEvent);
 		}
+		changeView(year, month, date, new Date(year + '-' + month + '-' + date).getDay());
 		hideWritePopup();
 	}
 	
@@ -127,7 +128,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
 		return options;
 	}
 
-	const dateOptionMaker = useCallback(() => {
+	const dateOptionMaker = () => {
 		let options = [];
 
 		for (let i=1; i<=getLastDateOfMonth(year, month); i++) {
@@ -135,11 +136,11 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent }) => {
 		}
 		
 		return options;
-	}, [year, month, date]);
+	}
 
 	const radioMaker = () => {
 		let radios = [];
-		categories.map((item, index) => {
+		categories.forEach((item, index) => {
 			radios.push(
 				<div key={'category-'+item.name} className="category-box">
 					<input 
