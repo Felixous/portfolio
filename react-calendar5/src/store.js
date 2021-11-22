@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import { createDate } from './resources/js/ui';
 
 const initialState = {
 	view: {
@@ -284,6 +285,7 @@ export default createStore((state = initialState, action) => {
 					year: action.data.year,
 					month: action.data.month,
 					date: action.data.date,
+					day: action.data.day,
 					event: action.data.event
 				}
 			}
@@ -342,7 +344,7 @@ export default createStore((state = initialState, action) => {
 		}
 		case 'VIEW_PREV_WEEK': {
 			let { year, month, date, day } = state.view;
-			let obj = new Date(year + '-' + month + '-' + date);
+			let obj = createDate(year, month, date);
 			obj.setDate(date - day - 7);
 			return {
 				...state,
@@ -356,7 +358,7 @@ export default createStore((state = initialState, action) => {
 		}
 		case 'VIEW_NEXT_WEEK': {
 			let { year, month, date, day } = state.view;
-			let obj = new Date(year + '-' + month + '-' + date);
+			let obj = createDate(year, month, date);
 			obj.setDate(date - day + 7);
 			return {
 				...state,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFullDayName, getFullMonthName, hideReadPopup, showDeletePopup, showWritePopup, textCapitalize } from '../../resources/js/ui';
+import { createDate, getFullDayName, getFullMonthName, hideReadPopup, showDeletePopup, showWritePopup, textCapitalize } from '../../resources/js/ui';
 
 const ReadPopup = ({ view, categories, event }) => {
 	// console.log('리드팝업 =============');
@@ -18,7 +18,7 @@ const ReadPopup = ({ view, categories, event }) => {
 	}
 	const dateMaker = () => {
 		if (!event) return;
-		let obj = new Date(view.year + '-' + view.month + '-' + event.date);
+		let obj = createDate(view.year, view.month, event.date)
 		let day = getFullDayName(obj.getDay());
 		let month = getFullMonthName(view.month);
 		let date = event.date;

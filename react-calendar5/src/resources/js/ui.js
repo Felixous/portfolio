@@ -8,6 +8,71 @@ console.log('===== ui.js');
 // 	console.log('=== 윈도우 로드!');
 // })
 
+export const resetUi = () => {
+	if (document.querySelector('.write-popup').classList.contains('is-active')) {
+		showWritePopup();
+	} else {
+		hideWritePopup();
+	}
+	if (document.querySelector('.read-popup').classList.contains('is-active')) {
+		showReadPopup();
+	} else {
+		hideReadPopup();
+	}
+	if (document.querySelector('.delete-popup').classList.contains('is-active')) {
+		showDeletePopup();
+	} else {
+		hideDeletePopup();
+	}
+}
+
+export const checkDevice = () => {
+	let w = document.querySelector('body').clientWidth;
+	let el = document.querySelector('html');
+	if (w <= 480) {
+		if (el.classList.contains('is-mobile')) return;
+		el.classList.remove('is-pc');
+		el.classList.remove('is-tablet');
+		el.classList.add('is-mobile');
+		resetUi();
+	} else if (w > 480 && w <= 768) {
+		if (el.classList.contains('is-tablet')) return;
+		el.classList.remove('is-mobile');
+		el.classList.remove('is-pc');
+		el.classList.add('is-tablet');
+		resetUi();
+	} else if (w > 768) {
+		if (el.classList.contains('is-pc')) return;
+		el.classList.remove('is-mobile');
+		el.classList.remove('is-tablet');
+		el.classList.add('is-pc');
+		resetUi();
+	}
+}
+
+window.addEventListener('load', () => {
+	checkDevice();
+})
+
+
+window.addEventListener('resize', () => {
+	checkDevice();
+})
+
+export const createDate = (year, month, date) => {
+	let obj;
+
+	let dateNum = Number(date);
+
+	if (dateNum < 10) {
+		obj = new Date(year + '-' + month + '-0' + date);
+	} else {
+		obj = new Date(year + '-' + month + '-' + date);
+	}
+
+	return obj;
+}
+
 export const getMonthlyMatrix = (year, month, date, events) => { // 2021, 11, 20 
 
 	let todayObj = new Date();
@@ -121,7 +186,7 @@ export const getWeeklyMatrix = (year, month, date, events) => {
 	let todayMonth = todayObj.getMonth() + 1;
 	let todayDate = todayObj.getDate();
 
-	let dateObj = new Date(year + '-' + month + '-' + date);
+	let dateObj = createDate(year, month, date)
 	let day = dateObj.getDay();
 
 	let result = [];
@@ -320,24 +385,67 @@ export const textCapitalize = (str) => {
 
 
 export const showWritePopup = () => {
-	document.querySelector('.write-popup').classList.add('is-active');
+	showPopup('.write-popup');
 }
 export const hideWritePopup = () => {
-	document.querySelector('.write-popup').classList.remove('is-active');
+	hidePopup('.write-popup');
 }
 
 export const showReadPopup = () => {
-	document.querySelector('.read-popup').classList.add('is-active');
+	showPopup('.read-popup');
 }
 export const hideReadPopup = () => {
-	document.querySelector('.read-popup').classList.remove('is-active');
+	hidePopup('.read-popup');
 }
 
 export const showDeletePopup = () => {
-	document.querySelector('.delete-popup').classList.add('is-active');
+	showPopup('.delete-popup');
 }
 export const hideDeletePopup = () => {
-	document.querySelector('.delete-popup').classList.remove('is-active');
+	hidePopup('.delete-popup');
+}
+
+export const showPopup = (selector) => {
+	let isMobile = document.querySelector('html').classList.contains('is-mobile');
+	let el = document.querySelector(selector);
+	let popupLayout = el.querySelector('.popup-layout');
+	let delay = 50;
+	if (!isMobile) {
+		el.classList.add('is-active');
+		popupLayout.style = '';
+		setTimeout(() => {
+			el.classList.add('is-animate');
+		}, delay);
+	} else {
+		el.classList.add('is-active');
+		setTimeout(() => {
+			el.classList.add('is-animate');
+			popupLayout.style = `top: calc(100% - ${popupLayout.offsetHeight}px)`;
+		}, delay);
+	}
+}
+
+export const hidePopup = (selector) => {
+	let isMobile = document.querySelector('html').classList.contains('is-mobile');
+	let el = document.querySelector(selector);
+	let popupLayout = el.querySelector('.popup-layout');
+	let delay = 50;
+	let animationDuration = 300;
+
+	if (!isMobile) {
+		popupLayout.style = '';
+		el.classList.remove('is-animate');
+		setTimeout(() => {
+			el.classList.remove('is-active');
+		}, delay);
+	} else {
+		popupLayout.style = '';
+		el.classList.remove('is-animate');
+		setTimeout(() => {
+			el.classList.remove('is-active');
+		}, animationDuration);
+	}
+
 }
 
 export const menuActivate = (index = 0) => { // 0 ~ 1
@@ -351,3 +459,5 @@ export const menuActivate = (index = 0) => { // 0 ~ 1
 		}
 	})
 }
+
+

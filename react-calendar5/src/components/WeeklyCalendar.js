@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFullMonthName, getShortMonthName, menuActivate } from '../resources/js/ui';
+import { getFullMonthName, getShortMonthName, menuActivate, createDate } from '../resources/js/ui';
 
 import CalendarHead from './CalendarHead';
 import WeeklyCalendarMain from '../containers/WeeklyCalendarMain';
@@ -7,7 +7,6 @@ import WeeklyCalendarMain from '../containers/WeeklyCalendarMain';
 const WeeklyCalendar = ({ view, viewToday, viewPrevWeek, viewNextWeek }) => {
 
 	const [ title, setTitle ] = useState('');
-	const [ subtitle ] = useState('');
 
 	useEffect(() => {
 		menuActivate(1);
@@ -15,8 +14,8 @@ const WeeklyCalendar = ({ view, viewToday, viewPrevWeek, viewNextWeek }) => {
 
 	useEffect(() => {
 		let { year, month, date, day } = view;
-		let sun = new Date(new Date(year + '-' + month + '-' + date).setDate(date - day));
-		let sat = new Date(new Date(year + '-' + month + '-' + date).setDate(date + 6 - day));
+		let sun = new Date(createDate(year, month, date).setDate(date - day));
+		let sat = new Date(createDate(year, month, date).setDate(date + 6 - day));
 		let sunMonth = sun.getMonth() + 1;
 		let satMonth = sat.getMonth() + 1;
 		let value = '';

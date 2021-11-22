@@ -11,14 +11,14 @@ const Header = ({ changeSelected }) => {
 	return (
 		<header>
 			<div className="inner-frame">
-				<h1>Felix's Calendar5</h1>
+				<h1><a href="http://localhost:3000/">Felix's Calendar5</a></h1>
 				<div className="btns-box">
 					<ul className="menu-list">
 						<li className="is-active"><Link to="/">Month</Link></li>
 						<li><Link to="/week">Week</Link></li>
 						{/* <li><Link to="/list">List</Link></li> */}
 					</ul>
-					<button type="button" className="btn btn-add-event" onClick={onClickPlus}></button>
+					<button type="button" className="btn btn-add" onClick={onClickPlus}></button>
 				</div>
 			</div>
 		</header>

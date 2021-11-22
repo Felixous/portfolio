@@ -7,7 +7,6 @@ import MonthlyCalendarMain from '../containers/MonthlyCalendarMain';
 const MonthlyCalendar = ({ view, viewToday, viewPrevMonth, viewNextMonth }) => {
 
 	const [ title, setTitle ] = useState('');
-	const [ subtitle, setSubtitle ] = useState('');
 
 	useEffect(() => {
 		menuActivate(0);

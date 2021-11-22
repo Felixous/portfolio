@@ -28,10 +28,10 @@ const WeeklyCalendarMain = ({ view, categories, events, changeSelected }) => {
 
 	return (
 		<div className="calendar-main">
-			<table className="tbl-weekly-calendar">
+			<table className="tbl-weekly">
 				<caption>테이블</caption>
 				<colgroup>
-					<col style={{ width: 100 + 'px' }} />
+					<col />
 					<col />
 				</colgroup>
 				<tbody>

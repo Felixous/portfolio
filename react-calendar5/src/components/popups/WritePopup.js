@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, textCapitalize } from '../../resources/js/ui';
+import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWritePopup, textCapitalize, createDate } from '../../resources/js/ui';
 
 const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView }) => {
 
@@ -91,7 +91,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 			}
 			updateEvent(newEvent);
 		}
-		changeView(year, month, date, new Date(year + '-' + month + '-' + date).getDay());
+		changeView(year, month, date, createDate(year, month, date).getDay());
 		hideWritePopup();
 	}
 	
@@ -107,7 +107,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 	const yearOptionMaker = () => {
 		let thisYear = year;
 		let startYear = thisYear - 5;
-		let endYear = thisYear + 5;
+		let endYear = thisYear + 6;
 		let options = [];
 
 		for (let i = startYear; i < endYear; i++) {
@@ -186,7 +186,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 
 				<div className="header">
 					<button type="button" className="btn btn-cancel" onClick={onClickCancel}>Cancel</button>
-					<strong>{(mode === 'create') ? 'New' : 'Edit' } Event</strong>
+					<b>{(mode === 'create') ? 'New' : 'Edit' } Event</b>
 					<button type="button" className="btn btn-save" onClick={onClickSave}>Save</button>
 				</div>
 				<div className="contents">

@@ -31,7 +31,7 @@ const MonthlyCalendarMain = ({ view, categories, events, changeSelected }) => {
 
 	return (
 		<div className="calendar-main">
-			<table className="tbl-monthly-calendar">
+			<table className="tbl-monthly">
 				<caption>테이블</caption>
 				<colgroup>
 					<col />
