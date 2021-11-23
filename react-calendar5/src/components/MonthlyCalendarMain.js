@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { getMonthlyMatrix } from '../resources/js/ui';
+import { getMonthlyMatrix } from '../resources/js/utils';
 
 import MonthlyCalendarTd from './MonthlyCalendarTd';
 

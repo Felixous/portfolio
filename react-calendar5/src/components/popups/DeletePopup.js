@@ -1,5 +1,5 @@
 import React from 'react';
-import { hideDeletePopup, hideReadPopup } from '../../resources/js/ui';
+import { hideDeletePopup, hideReadPopup } from '../../resources/js/utils';
 
 const DeletePopup = ({ event, deleteEvent }) => {
 

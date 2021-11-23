@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { getShortDayName, getWeeklyMatrix } from '../resources/js/ui';
+import { getShortDayName, getWeeklyMatrix, showWritePopup } from '../resources/js/utils';
 
 import WeeklyCalendarTd from './WeeklyCalendarTd';
 
@@ -13,7 +13,7 @@ const WeeklyCalendarMain = ({ view, categories, events, changeSelected }) => {
 		dateMatrix.forEach((o, i) => {
 			let className = o.classNameList.join(' ');
 			trs.push(
-				<tr key={o.year + '-' + o.month + '-' + o.date} className={className}>
+				<tr key={o.year + '-' + o.month + '-' + o.date} className={className} onClick={onClickTr(o)}>
 					<th>
 						<div className="day">{getShortDayName(o.day)}</div>
 						<div className="date">{o.date}</div>
@@ -25,6 +25,14 @@ const WeeklyCalendarMain = ({ view, categories, events, changeSelected }) => {
 		
 		return trs;
 	}, [view, categories, events, changeSelected])
+
+	const onClickTr = (o) => {
+		let { year, month, date } = o;
+		return () => {
+			changeSelected(year, month, date);
+			showWritePopup();
+		}
+	}
 
 	return (
 		<div className="calendar-main">

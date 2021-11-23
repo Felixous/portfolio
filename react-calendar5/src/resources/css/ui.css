@@ -73,7 +73,7 @@ a:hover { opacity: 0.7; }
 *****************************************/
 /* html */
 html { line-height: 1.5; font-family: 'Noto Sans KR', sans-serif; color: #2b2e39; }
-body { min-height: 100vh; background: #fff; }
+body { min-height: 100vh; }
 
 /* header */
 header { z-index: 100; position: fixed; top: 0; left: 0; width: 100%; color: #fff; padding: 20px 0; box-sizing: border-box; background: #2b2e39; transition: padding 0.2s; }
@@ -157,6 +157,7 @@ table.tbl-monthly tbody td .scroller { overflow-y: auto; height: 90px; transitio
 /* table weekly */
 table.tbl-weekly { width: 100%; margin: 30px 0 0 0; border-collapse: collapse; table-layout: fixed; }
 table.tbl-weekly tbody {}
+table.tbl-weekly tbody tr { cursor: pointer; }
 table.tbl-weekly tbody th { position: relative; width: 100px; height: 100px; border-top: 1px solid #dadada; border-bottom: 1px solid #dadada; line-height: 1.3; font-weight: 400; transition: width 0.2s; }
 table.tbl-weekly tbody th .day { font-size: 12px; }
 table.tbl-weekly tbody th .date { font-size: 14px; font-weight: 500; }
@@ -428,15 +429,15 @@ ul.toggle-list > li input:checked ~ label { opacity: 1; color: #303030; backgrou
 
 @media screen and (max-width: 480px) { /* mobile */
 	/* write popup */
-	.write-popup .popup-layout { position: absolute; top: 100%; left: 0; width: 100%; height: 80vh; border-radius: 12px 12px 0 0; transition: top 0.3s; }
+	.write-popup .popup-layout { position: absolute; top: 100%; left: 0; width: 100%; height: 80vh; border-radius: 12px 12px 0 0; transition: margin 0.3s; }
 	.write-popup .popup-layout .contents { position: absolute; top: 42px; bottom: 0; left: 0; width: 100%; }
 
 	/* read popup */
-	.read-popup .popup-layout { position: absolute; top: 100%; left: 0; width: 100%; border-radius: 12px 12px 0 0; transition: top 0.3s; }
+	.read-popup .popup-layout { position: absolute; top: 100%; left: 0; width: 100%; border-radius: 12px 12px 0 0; transition: margin 0.3s; }
 	.read-popup .popup-layout .bottom { padding-bottom: 10px; }
 	
 	/* delete popup */
-	.delete-popup .popup-layout { position: absolute; top: 100%; left: 0; width: 100%; border-radius: 12px 12px 0 0; transition: top 0.3s; }
+	.delete-popup .popup-layout { position: absolute; top: 100%; left: 0; width: 100%; border-radius: 12px 12px 0 0; transition: margin 0.3s; }
 	.delete-popup .popup-layout .bottom { padding-bottom: 10px; }
 }
 

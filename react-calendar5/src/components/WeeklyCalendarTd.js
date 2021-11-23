@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { textCapitalize, showReadPopup } from '../resources/js/ui';
+import { textCapitalize, showReadPopup } from '../resources/js/utils';
 
 const WeeklyCalendarTd = ({ categories, cellInfo, changeSelected }) => {
 	const { year, month, date, events } = cellInfo;

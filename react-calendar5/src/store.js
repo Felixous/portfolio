@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { createDate } from './resources/js/ui';
+import { createDate } from './resources/js/utils';
 
 const initialState = {
 	view: {

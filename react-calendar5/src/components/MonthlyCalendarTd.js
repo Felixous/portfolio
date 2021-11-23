@@ -1,5 +1,5 @@
 import React from 'react';
-import { showReadPopup, showWritePopup } from '../resources/js/ui';
+import { showReadPopup, showWritePopup } from '../resources/js/utils';
 
 const MonthlyCalendarTd = ({ cellInfo, categories, changeSelected }) => {
 	const { year, month, date, classNameList, events } = cellInfo;

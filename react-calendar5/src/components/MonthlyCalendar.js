@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFullMonthName, menuActivate } from '../resources/js/ui';
+import { getFullMonthName, menuActivate } from '../resources/js/utils';
 
 import CalendarHead from './CalendarHead';
 import MonthlyCalendarMain from '../containers/MonthlyCalendarMain';
@@ -10,6 +10,7 @@ const MonthlyCalendar = ({ view, viewToday, viewPrevMonth, viewNextMonth }) => {
 
 	useEffect(() => {
 		menuActivate(0);
+		viewToday();
 	}, []);
 
 	useEffect(() => {

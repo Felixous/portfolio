@@ -2,7 +2,7 @@
 import './resources/css/ui.css';
 
 // UI js
-import './resources/js/ui.js';
+import './resources/js/utils';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -14,7 +14,7 @@ import App from './App';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<BrowserRouter>
+		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<App />
 		</BrowserRouter>
 	</Provider>

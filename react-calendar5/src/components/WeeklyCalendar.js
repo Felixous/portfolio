@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFullMonthName, getShortMonthName, menuActivate, createDate } from '../resources/js/ui';
+import { getFullMonthName, getShortMonthName, menuActivate, createDate } from '../resources/js/utils';
 
 import CalendarHead from './CalendarHead';
 import WeeklyCalendarMain from '../containers/WeeklyCalendarMain';
@@ -10,6 +10,7 @@ const WeeklyCalendar = ({ view, viewToday, viewPrevWeek, viewNextWeek }) => {
 
 	useEffect(() => {
 		menuActivate(1);
+		viewToday();
 	}, []);
 
 	useEffect(() => {

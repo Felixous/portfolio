@@ -1,4 +1,4 @@
-console.log('===== ui.js');
+// console.log('===== ui.js');
 
 // document.addEventListener("DOMContentLoaded", function(){
 // 	console.log('=== 다큐먼트 레디!');
@@ -8,7 +8,7 @@ console.log('===== ui.js');
 // 	console.log('=== 윈도우 로드!');
 // })
 
-export const resetUi = () => {
+export const resetPopup = () => {
 	if (document.querySelector('.write-popup').classList.contains('is-active')) {
 		showWritePopup();
 	} else {
@@ -29,48 +29,35 @@ export const resetUi = () => {
 export const checkDevice = () => {
 	let w = document.querySelector('body').clientWidth;
 	let el = document.querySelector('html');
+
+	// document.querySelector('h1').innerText = window.innerHeight;
+
 	if (w <= 480) {
 		if (el.classList.contains('is-mobile')) return;
 		el.classList.remove('is-pc');
 		el.classList.remove('is-tablet');
 		el.classList.add('is-mobile');
-		resetUi();
+		resetPopup();
 	} else if (w > 480 && w <= 768) {
 		if (el.classList.contains('is-tablet')) return;
 		el.classList.remove('is-mobile');
 		el.classList.remove('is-pc');
 		el.classList.add('is-tablet');
-		resetUi();
+		resetPopup();
 	} else if (w > 768) {
 		if (el.classList.contains('is-pc')) return;
 		el.classList.remove('is-mobile');
 		el.classList.remove('is-tablet');
 		el.classList.add('is-pc');
-		resetUi();
+		resetPopup();
 	}
 }
 
-window.addEventListener('load', () => {
-	checkDevice();
-})
-
-
-window.addEventListener('resize', () => {
-	checkDevice();
-})
-
 export const createDate = (year, month, date) => {
-	let obj;
+	let dateStr = (date < 10) ? '0' + date : date;
+	let monthStr = (month < 10) ? '0' + month : month;
 
-	let dateNum = Number(date);
-
-	if (dateNum < 10) {
-		obj = new Date(year + '-' + month + '-0' + date);
-	} else {
-		obj = new Date(year + '-' + month + '-' + date);
-	}
-
-	return obj;
+	return new Date(year + '-' + monthStr + '-' + dateStr);
 }
 
 export const getMonthlyMatrix = (year, month, date, events) => { // 2021, 11, 20 
@@ -410,17 +397,21 @@ export const showPopup = (selector) => {
 	let el = document.querySelector(selector);
 	let popupLayout = el.querySelector('.popup-layout');
 	let delay = 50;
+
 	if (!isMobile) {
-		el.classList.add('is-active');
 		popupLayout.style = '';
+		el.classList.add('is-active');
 		setTimeout(() => {
 			el.classList.add('is-animate');
 		}, delay);
 	} else {
 		el.classList.add('is-active');
+		if (el.classList.contains('write-popup')) {
+			popupLayout.style.height = (window.innerHeight - 160) + 'px';
+		}
 		setTimeout(() => {
 			el.classList.add('is-animate');
-			popupLayout.style = `top: calc(100% - ${popupLayout.offsetHeight}px)`;
+			popupLayout.style.marginTop = -popupLayout.offsetHeight + 'px'; 
 		}, delay);
 	}
 }
@@ -429,8 +420,7 @@ export const hidePopup = (selector) => {
 	let isMobile = document.querySelector('html').classList.contains('is-mobile');
 	let el = document.querySelector(selector);
 	let popupLayout = el.querySelector('.popup-layout');
-	let delay = 50;
-	let animationDuration = 300;
+	let delay = 300;
 
 	if (!isMobile) {
 		popupLayout.style = '';
@@ -443,7 +433,7 @@ export const hidePopup = (selector) => {
 		el.classList.remove('is-animate');
 		setTimeout(() => {
 			el.classList.remove('is-active');
-		}, animationDuration);
+		}, delay);
 	}
 
 }
