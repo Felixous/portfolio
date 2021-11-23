@@ -16,14 +16,18 @@ ul, ol { list-style: none; }
 
 
 /* navigation */
-.navigation { z-index: 100; position: fixed; top: 50%; right: 0; transform: translateY(-50%); text-align: right; }
-.navigation ul.menu-list { font-size: 14px; }
-.navigation ul.menu-list li { margin: 10px 0; opacity: 0.5; }
-.navigation ul.menu-list li.is-active { opacity: 1; }
-.navigation ul.menu-list li a { display: inline-block; vertical-align: top; font-size: 0; min-width: 40px; padding: 0 10px 0 0; white-space: nowrap; text-align: center; }
-.navigation ul.menu-list li .first { display: inline-block; vertical-align: top; font-size: 16px; }
-.navigation ul.menu-list li .others { display: inline-block; vertical-align: top; width: 0; font-size: 16px; overflow: hidden; }
-.navigation ul.menu-list li a:hover .others { width: auto; padding: 0 10px 0 0; transition: .2s; }
+nav { z-index: 100; position: fixed; top: 50%; right: 0; transform: translateY(-50%); text-align: right; }
+nav ul.menu-list { font-size: 14px; }
+nav ul.menu-list li { margin: 10px 0; opacity: 0.5; }
+nav ul.menu-list li.is-active { opacity: 1; }
+nav ul.menu-list li a { display: inline-block; vertical-align: top; font-size: 0; min-width: 40px; padding: 0 10px 0 0; white-space: nowrap; text-align: center; }
+nav ul.menu-list li .first { display: inline-block; vertical-align: top; font-size: 16px; }
+nav ul.menu-list li .others { display: inline-block; vertical-align: top; width: 0; font-size: 16px; overflow: hidden; }
+nav ul.menu-list li a:hover .others { width: auto; padding: 0 10px 0 0; transition: .2s; }
+
+
+/* main */
+main {}
 
 
 /* section intro */
@@ -86,13 +90,27 @@ ul, ol { list-style: none; }
 .section-works .work .content .details dl dt { display: inline-block; vertical-align: top; margin: 0 10px 0 0; }
 .section-works .work .content .details dl dd { display: inline-block; vertical-align: top; }
 .section-works .work .content p.desc {}
-.section-works .pagination { position: absolute; bottom: 200px; right: 0; }
-.section-works .pagination .current {}
-.section-works .pagination .slash {}
-.section-works .pagination .total {}
 
 
 /* section contact */
 .section-contact { height: 500px; color: #f0f0f0; background: #1f2e3b; }
 .section-contact > .inner { position: relative; width: 1200px; margin: 0 auto; padding: 80px 0; }
 .section-contact h2.title { text-align: center; font-size: 28px; font-weight: 500; }
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) { /* tablet */
+}
+
+
+
+
+
+
+@media screen and (max-width: 480px) { /* mobile */
+}

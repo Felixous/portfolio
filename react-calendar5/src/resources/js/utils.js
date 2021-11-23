@@ -1,13 +1,3 @@
-// console.log('===== ui.js');
-
-// document.addEventListener("DOMContentLoaded", function(){
-// 	console.log('=== 다큐먼트 레디!');
-// });
-
-// window.addEventListener('load', function() {
-// 	console.log('=== 윈도우 로드!');
-// })
-
 export const resetPopup = () => {
 	if (document.querySelector('.write-popup').classList.contains('is-active')) {
 		showWritePopup();
@@ -29,8 +19,6 @@ export const resetPopup = () => {
 export const checkDevice = () => {
 	let w = document.querySelector('body').clientWidth;
 	let el = document.querySelector('html');
-
-	// document.querySelector('h1').innerText = window.innerHeight;
 
 	if (w <= 480) {
 		if (el.classList.contains('is-mobile')) return;
@@ -103,9 +91,6 @@ export const getMonthlyMatrix = (year, month, date, events) => { // 2021, 11, 20
 			classNameList: ['this-month'],
 			events: [],
 		}
-		// if (todayYear === year && todayMonth === month && todayDate === i+1) {
-		// 	obj.classNameList.push('today')
-		// }
 		array.push({...obj});
 	}
 
@@ -160,8 +145,6 @@ export const getMonthlyMatrix = (year, month, date, events) => { // 2021, 11, 20
 		result.push(array.slice(i*7, i*7+7));
 	}
 
-	// console.log(result);
-
 	return result;
 
 }
@@ -212,7 +195,6 @@ export const getWeeklyMatrix = (year, month, date, events) => {
 		result.push(obj);
 	}
 
-	// console.log(result);
 	return result;
 }
 

@@ -273,6 +273,87 @@ const initialState = {
 			category: 'home',
 			repeat: 'yearly'
 		},
+		{
+			id: 108,
+			year: 2021,
+			month: 11,
+			date: 24,
+			text: '친구랑 약속',
+			category: 'friends',
+			repeat: 'none'
+		},
+		{
+			id: 109,
+			year: 2021,
+			month: 11,
+			date: 13,
+			text: '영화 관람',
+			category: 'etc',
+			repeat: 'none'
+		},
+		{
+			id: 110,
+			year: 2021,
+			month: 10,
+			date: 26,
+			text: '여행 가기',
+			category: 'home',
+			repeat: 'none'
+		},
+		{
+			id: 111,
+			year: 2021,
+			month: 11,
+			date: 26,
+			text: '병원 가기',
+			category: 'etc',
+			repeat: 'none'
+		},
+		{
+			id: 112,
+			year: 2021,
+			month: 10,
+			date: 17,
+			text: '선물 사기',
+			category: 'home',
+			repeat: 'none'
+		},
+		{
+			id: 113,
+			year: 2021,
+			month: 11,
+			date: 26,
+			text: '김장 도와주기',
+			category: 'home',
+			repeat: 'none'
+		},
+		{
+			id: 114,
+			year: 2021,
+			month: 12,
+			date: 2,
+			text: '동료들 만나기',
+			category: 'works',
+			repeat: 'none'
+		},
+		{
+			id: 115,
+			year: 2021,
+			month: 12,
+			date: 9,
+			text: '친구 생일',
+			category: 'friends',
+			repeat: 'none'
+		},
+		{
+			id: 116,
+			year: 2021,
+			month: 11,
+			date: 15,
+			text: '반찬 만들기',
+			category: 'home',
+			repeat: 'none'
+		},
 	],
 }
 
@@ -385,8 +466,6 @@ export default createStore((state = initialState, action) => {
 		case 'UPDATE_EVENT': {
 			let eventObj = state.events.find((o) => o.id === action.data.id);
 			let eventIndex = state.events.indexOf(eventObj);
-			// console.log('기존 이벤트 객체는 >>', eventObj, eventIndex);
-			// console.log('새로운 이벤트 객체는 >>', action.data);
 			return {
 				...state,
 				events: [
