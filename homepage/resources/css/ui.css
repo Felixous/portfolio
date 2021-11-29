@@ -46,7 +46,7 @@ img { vertical-align: top; }
 
 
 /* navigation */
-nav { z-index: 100; position: fixed; top: 50%; right: 0; transform: translateY(-50%); text-align: right; font-family: 'Roboto Slab', 'Pretendard', serif; transition: color 0.2s; }
+nav { z-index: 1000; position: fixed; top: 50%; right: 0; transform: translateY(-50%); text-align: right; font-family: 'Roboto Slab', 'Pretendard', serif; transition: color 0.2s; }
 nav ul.menu-list { font-size: 14px; }
 nav ul.menu-list li { margin: 10px 0; opacity: 0.5; }
 nav ul.menu-list li.is-active { opacity: 1; }
@@ -56,6 +56,11 @@ nav ul.menu-list li .others { display: inline-block; vertical-align: top; width:
 nav ul.menu-list li .btn:hover .others { width: auto; padding: 0 10px 0 0; transition: width 0.2s; }
 
 nav.is-light { color: #fff; }
+
+@media screen and (max-width: 768px) {
+	nav ul.menu-list li .btn:hover .others { display: none; }
+}
+
 
 
 /* main */
@@ -136,8 +141,9 @@ section.about ul.skill-list > li dl dd p { margin: 30px 0 0 0; padding: 0 20px; 
 
 /* section works */
 section.works { position: relative; margin: 80px 0 0 0; }
-section.works .head-box { z-index: 100; position: relative; max-width: 1200px; height: 240px; margin: 0 auto; padding: 50px 40px 60px; box-sizing: border-box; background: #fff; }
-section.works .main-box { z-index: 50; position: relative; height: 4700px; }
+section.works .head-box { z-index: 100; position: absolute; top: 0; left: 0; width: 100%; padding: 50px 0 20px; box-sizing: border-box; background: #fff; }
+section.works .head-box:after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 20px; background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%); }
+section.works .main-box { z-index: 50; position: relative; height: 4700px; padding: 240px 0 0; }
 section.works h2.title { text-align: center; font-size: 28px; font-weight: 500; font-family: 'Roboto Slab', 'Pretendard', serif; }
 section.works ul.category-list { position: relative; margin: 30px 0 0 0; text-align: center; font-family: 'Roboto Slab', 'Pretendard', serif; }
 section.works ul.category-list > li { position: relative; display: inline-block; vertical-align: top; margin: 0 16px; }
@@ -152,7 +158,7 @@ section.works ul.page-list > li { display: inline-block; margin: 0 4px; }
 section.works ul.page-list > li .btn { opacity: 0.5; padding: 0 4px; }
 section.works ul.page-list > li .btn:hover { opacity: 0.75; }
 section.works ul.page-list > li.is-active .btn { opacity: 1; }
-section.works ul.work-list { max-width: 1200px; margin: 0 auto; padding: 0 0 200px; }
+section.works ul.work-list { position: relative; max-width: 1200px; margin: 0 auto; padding: 0 0 200px; }
 section.works ul.work-list > li { opacity: 0; }
 section.works ul.work-list > li.is-active { z-index: 10; opacity: 1; }
 section.works .work {}
@@ -175,22 +181,16 @@ section.works .work .visual ul.pic-list > li .pic:before { content: ''; display:
 
 section.works.is-fixed {}
 section.works.is-fixed .head-box { position: fixed; top: 0; left: 0; width: 100%; max-width: none; }
-section.works.is-fixed .main-box { padding-top: 240px; }
+section.works.is-fixed .main-box {}
 section.works.is-fixed ul.work-list { position: fixed; top: 240px; left: 0; right: 0; width: 100%; }
 section.works.is-fixed ul.work-list > li { position: absolute; top: 0; left: 0; width: 100%; }
 
 section.works.is-finish {}
 section.works.is-finish .head-box { position: absolute; top: 4000px; left: 0; width: 100%; max-width: none; }
-section.works.is-finish .main-box { padding-top: 240px; }
+section.works.is-finish .main-box {}
 section.works.is-finish ul.work-list { position: absolute; top: 4240px; left: 0; right: 0; width: 100%; }
 section.works.is-finish ul.work-list > li { position: absolute; top: 0; left: 0; width: 100%; }
 
-.test { position: absolute; top: 240px; left: 0; width: 200px; }
-.test > * { height: 1000px; }
-.test-01 { background: skyblue; }
-.test-02 { background: pink; }
-.test-03 { background: skyblue; }
-.test-04 { background: pink; }
 
 /* section contact */
 section.contact { color: #f0f0f0; background: #1f2e3b; }
@@ -207,14 +207,37 @@ section.contact .contacts dl dd { margin: 8px 0 0 0; }
 
 
 @media screen and (max-width: 1024px) { /* tablet horizontal */
+	nav ul.menu-list li .btn { min-width: 30px; padding-right: 0; }
+
+	/* section intro */
+	section.intro .text-box [class^="text"] { font-size: 48px; }
+	section.intro.is-finish .text-box [class^="text"] { font-size: 32px; }
+
 	/* section about */
 	section.about ul.skill-list { width: 100%; }
 	section.about ul.skill-list + ul.skill-list { margin-top: 40px; }
 
 	/* section works */
+	section.works .head-box { padding-top: 40px; }
+	section.works .main-box { height: auto; padding-top: 180px; }
 	section.works .work { text-align: center; }
-	section.works .work .content { float: none; width: auto; padding: 0; }
+	section.works .work .info { float: none; width: auto; padding: 0; }
 	section.works .work .visual { float: none; width: auto; max-width: 600px; margin: 50px auto 0; }
+	section.works ul.work-list { padding-bottom: 160px; padding-left: 20px; padding-right: 20px; box-sizing: border-box; }
+	section.works ul.work-list > li { opacity: 1; _padding-top: 20px; }
+	section.works ul.work-list > li + li { margin-top: 60px; }
+
+	section.works.is-fixed {}
+	section.works.is-fixed .head-box { position: fixed; top: 0; left: 0; width: 100%; max-width: none; }
+	section.works.is-fixed .main-box { height: auto; }
+	section.works.is-fixed ul.work-list { position: relative; top: auto; }
+	section.works.is-fixed ul.work-list > li { position: relative; top: 0; left: 0; width: 100%; }
+
+	section.works.is-finish {}
+	section.works.is-finish .head-box { position: absolute; top: 0; left: 0; width: 100%; max-width: none; }
+	section.works.is-finish .main-box { height: auto; }
+	section.works.is-finish ul.work-list { position: relative; top: auto; }
+	section.works.is-finish ul.work-list > li { position: relative; top: 0; left: 0; width: 100%; }
 }
 
 
@@ -223,10 +246,22 @@ section.contact .contacts dl dd { margin: 8px 0 0 0; }
 @media screen and (max-width: 768px) { /* tablet vertical */
 	/* section intro */
 	section.intro { height: 82vh; }
+	section.intro .text-box [class^="text"] { font-size: 42px; }
+	section.intro.is-finish .text-box [class^="text"] { font-size: 28px; }
 
 	section.about .bg-box { _background-image: linear-gradient(to bottom, #e7e2de 0%, #e7e2de 60%, #fff 100%); }
 	section.about ul.skill-list > li { width: 100%; }
 	section.about ul.skill-list > li + li { margin-top: 40px; }
+
+
+	section.about h2.title { font-size: 24px; }
+
+	section.works { margin-top: 100px; }
+	section.works h2.title { font-size: 24px; }
+	section.works .head-box { padding-top: 20px; }
+	section.works ul.category-list { margin-top: 20px; font-size: 14px; }
+
+	section.works .work .info h3.title { font-size: 22px; }
 	
 }
 
@@ -237,12 +272,10 @@ section.contact .contacts dl dd { margin: 8px 0 0 0; }
 
 @media screen and (max-width: 480px) { /* mobile */
 
-	nav ul.menu-list li a { min-width: 30px; padding-right: 0; }
-
+	section.intro .text-box [class^="text"] { font-size: 32px; }
+	section.intro.is-finish .text-box [class^="text"] { font-size: 22px; }
 
 	section.about .bg-box > .inner { padding-left: 25px; padding-right: 25px; }
-	section.about .panel-box { padding-left: 30px; padding-right: 30px; }
-
-	section.works > .inner { padding-left: 25px; padding-right: 25px; }
+	section.about .panel-box { padding-left: 25px; padding-right: 25px; }
 
 }

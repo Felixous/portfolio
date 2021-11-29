@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+	deviceCheck();
 	fixedWorks = new FixedWorks();
 	introTextFlow();
 	navBtns();
@@ -7,6 +8,7 @@ window.addEventListener('load', function() {
 })
 
 window.addEventListener('resize', function() {
+	deviceCheck();
 	fixedWorks.update();
 })
 
@@ -96,10 +98,6 @@ function navActivate() {
 	}
 }
 
-function worksFix() {
-
-}
-
 
 function getClosest(el, findSelector) {
 	var el = el;
@@ -141,6 +139,7 @@ function FixedWorks() {
 	var _ = this;
 
 	_.section = document.querySelector('section.works');
+	_.nextSection = document.querySelector('section.contact');
 	_.headBox = _.section.querySelector('.head-box');
 	_.mainBox = _.section.querySelector('.main-box');
 	_.categories = _.section.querySelectorAll('ul.category-list > li');
@@ -151,20 +150,26 @@ function FixedWorks() {
 	_.initTab();
 	_.initScroll();
 }
-
 FixedWorks.prototype.init = function() {
 	var _ = this;
 
-	_.step = 1000;
+	_.device = document.querySelector('html').classList.contains('is-pc') ? 'pc' : 'mobile';
 	_.startY = _.section.offsetTop;
-	_.totalH = _.items.length * _.step + window.innerHeight - _.headBox.offsetHeight;
-	_.endY = _.startY + _.items.length * _.step;
+	_.step = 1000;
 	_.itemsPos = [];
-
-	for (var i = 0; i <= _.items.length; i++) {
-		_.itemsPos.push(_.startY + (_.step * i));
+	
+	if (_.device === 'pc') {
+		for (var i = 0; i <= _.items.length; i++) {
+			_.itemsPos.push(_.startY + (_.step * i));
+		}
+		_.endY = _.startY + _.items.length * _.step;
+	} else {
+		for (var i = 0; i < _.items.length; i++) {
+			_.itemsPos.push(Math.round(getOffsetTop(_.items[i])) - 180);
+		}
+		_.endY = _.itemsPos[_.itemsPos.length - 1];
+		_.itemsPos.push(_.nextSection.offsetTop);
 	}
-
 }
 FixedWorks.prototype.initTab = function() {
 	var _ = this;
@@ -190,32 +195,40 @@ FixedWorks.prototype.initTab = function() {
 }
 FixedWorks.prototype.initScroll = function() {
 	var _ = this;
-	window.addEventListener('scroll', function() {
-		var scrY = window.pageYOffset;
-		console.log(_.itemsPos);
-		console.log(scrY);
-		if (scrY < _.startY) {
-			_.section.classList.remove('is-fixed');
-			_.section.classList.remove('is-finish');
-		} else if (scrY >= _.startY && scrY < _.endY) {
-			_.section.classList.add('is-fixed');
-			_.section.classList.remove('is-finish');
-		} else if (scrY >= _.endY) {
-			_.section.classList.remove('is-fixed');
-			_.section.classList.add('is-finish');
+	window.addEventListener('scroll', _.scrollHandler.bind(this))
+}
+FixedWorks.prototype.scrollHandler = function() {
+	var _ = this;
+	var scrY = window.pageYOffset;
+
+	if (scrY < _.startY) {
+		_.section.classList.remove('is-fixed');
+		_.section.classList.remove('is-finish');
+		_.headBox.style.top = null;
+	} else if (scrY >= _.startY && scrY < _.endY) {
+		_.section.classList.add('is-fixed');
+		_.section.classList.remove('is-finish');
+		_.headBox.style.top = null;
+	} else if (scrY >= _.endY) {
+		_.section.classList.remove('is-fixed');
+		_.section.classList.add('is-finish');
+		if (_.device === 'pc') {
+			_.headBox.style.top = null;
+		} else {
+			_.headBox.style.top = (_.itemsPos[_.itemsPos.length - 2] - _.startY) + 'px';
 		}
-		for (var i = 0; i < _.itemsPos.length - 1; i++) {
-			if (scrY >= _.itemsPos[i] && scrY < _.itemsPos[i + 1]) {
-				_.activate(i);
-			} else if (scrY < _.itemsPos[0]) {
-				_.activate(0);
-			} else if (scrY >= _.itemsPos[_.items.length]) {
-				_.activate(_.items.length - 1);
-			} else {
-				_.deactivate(i);
-			}
+	}
+	for (var i = 0; i < _.itemsPos.length - 1; i++) {
+		if (scrY >= _.itemsPos[i] && scrY < _.itemsPos[i + 1]) {
+			_.activate(i);
+		} else if (scrY < _.itemsPos[0]) {
+			_.activate(0);
+		} else if (scrY >= _.itemsPos[_.items.length]) {
+			_.activate(_.items.length - 1);
+		} else {
+			_.deactivate(i);
 		}
-	})
+	}
 }
 FixedWorks.prototype.activate = function(index) {
 	var _ = this;
@@ -236,4 +249,30 @@ FixedWorks.prototype.update = function() {
 	var _ = this;
 	
 	_.init();
+	_.scrollHandler();
+}
+
+
+
+function deviceCheck() {
+	var width = document.body.offsetWidth;
+	var html = document.querySelector('html');
+	if (width > 1024) {
+		html.classList.add('is-pc');
+		html.classList.remove('is-tablet');
+		html.classList.remove('is-mobile');
+	} else if (width <= 1024 && width > 480 ) {
+		html.classList.remove('is-pc');
+		html.classList.add('is-tablet');
+		html.classList.remove('is-mobile');
+	} else if (width <= 480) {
+		html.classList.remove('is-pc');
+		html.classList.remove('is-tablet');
+		html.classList.add('is-mobile');
+	}
+}
+
+
+function getOffsetTop(el) {
+	return el.getBoundingClientRect().top + window.pageYOffset;
 }
