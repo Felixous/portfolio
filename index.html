@@ -28,28 +28,28 @@
 	<nav>
 		<ul class="menu-list">
 			<li>
-				<a href="#">
+				<button type="button" class="btn">
 					<span class="first">I</span>
 					<span class="others">ntro</span>
-				</a>
+				</button>
 			</li>
 			<li>
-				<a href="#">
+				<button type="button" class="btn">
 					<span class="first">A</span>
 					<span class="others">bout me</span>
-				</a>
-			</li>
-			<li class="is-active">
-				<a href="#">
-					<span class="first">W</span>
-					<span class="others">orks</span>
-				</a>
+				</button>
 			</li>
 			<li>
-				<a href="#">
+				<button type="button" class="btn">
+					<span class="first">W</span>
+					<span class="others">orks</span>
+				</button>
+			</li>
+			<li>
+				<button type="button" class="btn">
 					<span class="first">C</span>
 					<span class="others">ontact</span>
-				</a>
+				</button>
 			</li>
 		</ul>
 	</nav>
@@ -59,7 +59,7 @@
 	<main>
 
 		<!-- section intro -->
-		<div class="section-intro">
+		<section class="intro">
 			<div class="inner">
 				<div class="text-box">
 					<div class="text-01">Hi, I'm Felix</div>
@@ -76,10 +76,10 @@
 					<button type="button" class="btn btn-play">play</button>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		<!-- section about -->
-		<div class="section-about">
+		<section class="about">
 			<div class="bg-box">
 				<div class="inner">
 					<h2 class="title">About me</h2>
@@ -147,83 +147,183 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		<!-- section works -->
-		<div class="section-works">
+		<section class="works">
 			<div class="inner">
-				<h2 class="title">Works</h2>
-				<ul class="category-list">
-					<li class="is-active">
-						<button type="button" class="btn">Personal Project</button>
-						<ul class="page-list">
-							<li class="is-active"><button type="button" class="btn">1</button></li>
-						</ul>
-					</li>
-					<li>
-						<button type="button" class="btn">Company Project</button>
-						<ul class="page-list">
-							<li><button type="button" class="btn">1</button></li>
-							<li><button type="button" class="btn">2</button></li>
-							<li><button type="button" class="btn">3</button></li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="work-list">
-					<li>
-						<div class="work">
-							<div class="content">
-								<h3 class="title">Woori Bank</h3>
-								<div class="details">
-									<dl>
-										<dt>Title</dt>
-										<dd>Lorem ipsum dolor sit amet.</dd>
-									</dl>
-									<dl>
-										<dt>Title Title Title</dt>
-										<dd>Lorem, ipsum.</dd>
-									</dl>
-									<dl>
-										<dt>Title Title</dt>
-										<dd>Lorem, ipsum dolor.</dd>
-									</dl>
+				<div class="head-box">
+					<h2 class="title">Works</h2>
+					<ul class="category-list">
+						<li class="is-active">
+							<button type="button" class="btn">Personal Project</button>
+							<ul class="page-list">
+								<li class="is-active"><button type="button" class="btn">1</button></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button" class="btn">Company Project</button>
+							<ul class="page-list">
+								<li><button type="button" class="btn">1</button></li>
+								<li><button type="button" class="btn">2</button></li>
+								<li><button type="button" class="btn">3</button></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="main-box">
+					<!-- <div class="test">
+						<div class="test-01"></div>
+						<div class="test-02"></div>
+						<div class="test-03"></div>
+						<div class="test-04"></div>
+					</div> -->
+					<ul class="work-list">
+						<li class="is-active">
+							<div class="work">
+								<div class="info">
+									<h3 class="title">One</h3>
+									<div class="details">
+										<dl>
+											<dt>Title</dt>
+											<dd>Lorem ipsum dolor sit amet.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title Title</dt>
+											<dd>Lorem, ipsum.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title</dt>
+											<dd>Lorem, ipsum dolor.</dd>
+										</dl>
+									</div>
+									<p class="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae ullam, a reprehenderit distinctio nobis dicta quas illum veniam culpa itaque natus earum eius nostrum totam est id, ipsam possimus! Corrupti.</p>
 								</div>
-								<p class="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae ullam, a reprehenderit distinctio nobis dicta quas illum veniam culpa itaque natus earum eius nostrum totam est id, ipsam possimus! Corrupti.</p>
+								<div class="visual">
+									<div class="screen"></div>
+									<ul class="pic-list">
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+									</ul>
+								</div>
 							</div>
-							<div class="visual">
-								<div class="screen"></div>
-								<ul class="pic-list">
-									<li><a href="#"><span class="pic"></span></a></li>
-									<li><a href="#"><span class="pic"></span></a></li>
-									<li><a href="#"><span class="pic"></span></a></li>
-								</ul>
+						</li>
+						<li>
+							<div class="work">
+								<div class="info">
+									<h3 class="title">Two</h3>
+									<div class="details">
+										<dl>
+											<dt>Title</dt>
+											<dd>Lorem ipsum dolor sit amet.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title Title</dt>
+											<dd>Lorem, ipsum.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title</dt>
+											<dd>Lorem, ipsum dolor.</dd>
+										</dl>
+									</div>
+									<p class="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae ullam, a reprehenderit distinctio nobis dicta quas illum veniam culpa itaque natus earum eius nostrum totam est id, ipsam possimus! Corrupti.</p>
+								</div>
+								<div class="visual">
+									<div class="screen"></div>
+									<ul class="pic-list">
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+									</ul>
+								</div>
 							</div>
-						</div>
-					</li>
-				</ul>
+						</li>
+						<li>
+							<div class="work">
+								<div class="info">
+									<h3 class="title">Three</h3>
+									<div class="details">
+										<dl>
+											<dt>Title</dt>
+											<dd>Lorem ipsum dolor sit amet.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title Title</dt>
+											<dd>Lorem, ipsum.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title</dt>
+											<dd>Lorem, ipsum dolor.</dd>
+										</dl>
+									</div>
+									<p class="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae ullam, a reprehenderit distinctio nobis dicta quas illum veniam culpa itaque natus earum eius nostrum totam est id, ipsam possimus! Corrupti.</p>
+								</div>
+								<div class="visual">
+									<div class="screen"></div>
+									<ul class="pic-list">
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="work">
+								<div class="info">
+									<h3 class="title">Four</h3>
+									<div class="details">
+										<dl>
+											<dt>Title</dt>
+											<dd>Lorem ipsum dolor sit amet.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title Title</dt>
+											<dd>Lorem, ipsum.</dd>
+										</dl>
+										<dl>
+											<dt>Title Title</dt>
+											<dd>Lorem, ipsum dolor.</dd>
+										</dl>
+									</div>
+									<p class="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae ullam, a reprehenderit distinctio nobis dicta quas illum veniam culpa itaque natus earum eius nostrum totam est id, ipsam possimus! Corrupti.</p>
+								</div>
+								<div class="visual">
+									<div class="screen"></div>
+									<ul class="pic-list">
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+										<li><a href="#"><span class="pic"></span></a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		</section>
 
 		<!-- section contact -->
-		<div class="section-contact">
+		<section class="contact">
 			<div class="inner">
 				<h2 class="title">Contact</h2>
 				<ul class="contacts">
 					<dl>
-						<dt>email</dt>
+						<dt>Email</dt>
 						<dd>felix@gmail.com</dd>
 					</dl>
 					<dl>
-						<dt>phone</dt>
+						<dt>Phone</dt>
 						<dd>010-9999-5555</dd>
 					</dl>
 					<dl>
-						<dt>git</dt>
+						<dt>Github</dt>
 						<dd>https://github.com/Felixous</dd>
 					</dl>
 				</ul>
 			</div>
-		</div>
+		</section>
 
 	</main>
 
