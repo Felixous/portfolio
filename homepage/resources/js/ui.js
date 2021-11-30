@@ -5,6 +5,7 @@ window.addEventListener('load', function() {
 	navBtns();
 	navLight();
 	navActivate();
+	workImgBtns();
 })
 
 window.addEventListener('resize', function() {
@@ -165,7 +166,7 @@ FixedWorks.prototype.init = function() {
 		_.endY = _.startY + _.items.length * _.step;
 	} else {
 		for (var i = 0; i < _.items.length; i++) {
-			_.itemsPos.push(Math.round(getOffsetTop(_.items[i])) - 180);
+			_.itemsPos.push(Math.round(getOffsetTop(_.items[i])) - 170);
 		}
 		_.endY = _.itemsPos[_.itemsPos.length - 1];
 		_.itemsPos.push(_.nextSection.offsetTop);
@@ -255,7 +256,8 @@ FixedWorks.prototype.update = function() {
 
 
 function deviceCheck() {
-	var width = document.body.offsetWidth;
+	// var width = document.body.offsetWidth;
+	var width = window.innerWidth;
 	var html = document.querySelector('html');
 	if (width > 1024) {
 		html.classList.add('is-pc');
@@ -275,4 +277,23 @@ function deviceCheck() {
 
 function getOffsetTop(el) {
 	return el.getBoundingClientRect().top + window.pageYOffset;
+}
+
+
+
+
+
+function workImgBtns() {
+	var btns = document.querySelectorAll('section.works ul.img-list .btn');
+	for (var i = 0; i < btns.length; i++) {
+		btns[i].addEventListener('click', function() {
+			var btn = this;
+			var src = btn.querySelector('img').getAttribute('src');
+			var visual = getClosest(btn, 'section.works .work .visual');
+			var target = visual.querySelector('.screen .img img');
+
+			target.setAttribute('src', src);
+			
+		})
+	}
 }
