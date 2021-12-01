@@ -62,12 +62,12 @@ img { vertical-align: top; }
 /* navigation */
 nav { z-index: 1000; position: fixed; top: 50vh; right: 0; transform: translateY(-50%); text-align: right; font-family: 'Roboto Slab', 'Pretendard', serif; transition: color 0.2s; }
 nav ul.menu-list { font-size: 14px; }
-nav ul.menu-list li { margin: 10px 0; opacity: 0.5; }
+nav ul.menu-list li { margin: 10px 0; opacity: 0.5; transition: opacity 0.2s; }
 nav ul.menu-list li.is-active { opacity: 1; }
 nav ul.menu-list li .btn { display: inline-block; vertical-align: top; font-size: 0; min-width: 40px; padding: 0 10px 0 0; white-space: nowrap; text-align: center; }
 nav ul.menu-list li .first { display: inline-block; vertical-align: top; font-size: 16px; }
 nav ul.menu-list li .others { display: inline-block; vertical-align: top; width: 0; font-size: 16px; overflow: hidden; }
-nav ul.menu-list li .btn:hover .others { width: auto; padding: 0 10px 0 0; transition: 0.2s; }
+nav ul.menu-list li .btn:hover .others { width: auto; padding: 0 10px 0 0; transition: 0.2s, color 0s; }
 
 nav.is-light { color: #fff; }
 

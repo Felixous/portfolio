@@ -44,7 +44,7 @@
 	
 		/* scroll response - intro section */
 		introFadeout();
-	
+
 	})
 	
 	
@@ -267,18 +267,27 @@
 				_.headBox.style.top = (_.itemsPos[_.itemsPos.length - 2] - _.startY) + 'px';
 			}
 		}
-		for (var i = 0; i < _.itemsPos.length - 1; i++) {
-			if (scrY >= _.itemsPos[i] && scrY < _.itemsPos[i + 1]) {
-				_.activate(i);
-			} else if (scrY < _.itemsPos[0]) {
-				_.activate(0);
-			} else if (scrY >= _.itemsPos[_.items.length]) {
-				_.activate(_.items.length - 1);
-			} else {
+		if (scrY < _.itemsPos[0]) {
+			_.activate(0);
+			for (var i = 1; i < _.items.length; i++) {
 				_.deactivate(i);
+			}
+		} else if (scrY >= _.itemsPos[_.items.length]) {
+			_.activate(_.items.length - 1);
+			for (var i = 0; i < _.items.length - 1; i++) {
+				_.deactivate(i);
+			}
+		} else if (scrY >= _.itemsPos[0] && scrY < _.itemsPos[_.items.length]) {
+			for (var i = 0; i < _.itemsPos.length - 1; i++) {
+				if (scrY >= _.itemsPos[i] && scrY < _.itemsPos[i + 1]) {
+					_.activate(i);
+				} else {
+					_.deactivate(i);
+				}
 			}
 		}
 	}
+	
 	
 	FixedWorks.prototype.activate = function(index) {
 		var _ = this;
