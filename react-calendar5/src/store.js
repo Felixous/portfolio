@@ -354,6 +354,96 @@ const initialState = {
 			category: 'home',
 			repeat: 'none'
 		},
+		{
+			id: 117,
+			year: 2021,
+			month: 12,
+			date: 15,
+			text: '스파이더맨 개봉',
+			category: 'etc',
+			repeat: 'none'
+		},
+		{
+			id: 118,
+			year: 2021,
+			month: 12,
+			date: 9,
+			text: '친구들이랑 저녁 먹기',
+			category: 'friends',
+			repeat: 'none'
+		},
+		{
+			id: 119,
+			year: 2021,
+			month: 12,
+			date: 22,
+			text: '팥죽 먹기',
+			category: 'home',
+			repeat: 'none'
+		},
+		{
+			id: 120,
+			year: 2021,
+			month: 12,
+			date: 24,
+			text: '노량진에서 회먹기',
+			category: 'home',
+			repeat: 'none'
+		},
+		{
+			id: 121,
+			year: 2021,
+			month: 12,
+			date: 7,
+			text: '스터디 모임',
+			category: 'works',
+			repeat: 'none'
+		},
+		{
+			id: 122,
+			year: 2021,
+			month: 12,
+			date: 20,
+			text: '치과 예약',
+			category: 'etc',
+			repeat: 'none'
+		},
+		{
+			id: 123,
+			year: 2021,
+			month: 12,
+			date: 28,
+			text: '친구들과 망년회',
+			category: 'friends',
+			repeat: 'none'
+		},
+		{
+			id: 124,
+			year: 2021,
+			month: 12,
+			date: 12,
+			text: '부모님 집 가기',
+			category: 'home',
+			repeat: 'none'
+		},
+		{
+			id: 125,
+			year: 2021,
+			month: 12,
+			date: 11,
+			text: '공원 산책',
+			category: 'etc',
+			repeat: 'none'
+		},
+		{
+			id: 126,
+			year: 2021,
+			month: 12,
+			date: 3,
+			text: '장보기',
+			category: 'home',
+			repeat: 'none'
+		},
 	],
 }
 

@@ -3,27 +3,23 @@ import { getLastDateOfMonth, getShortMonthName, getMonthFromShortName, hideWrite
 
 const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView }) => {
 
-	// console.log('=======================================================');
-	// console.log('쓰기팝업 실행!! >>> ', selected);
-
 	let mode = !selected.event ? 'create' : 'update';
 
 	const [ year, setYear ] = useState(selected.year);
 	const [ month, setMonth ] = useState(selected.month);
 	const [ date, setDate ] = useState(selected.date);
-	// const [ event, setEvent ] = useState(selected.event);
 	const [ text, setText ] = useState('');
 	const [ category, setCategory ] = useState('home'); // 'home', 'friends', 'works', 'etc'
 	const [ repeat, setRepeat ] = useState('none'); // '', 'monthly', 'yearly'
 	
 	const clearBtn = useRef();
 	const textInput = useRef();
+	const alertRef = useRef();
+	let alertTimerRef = useRef(null);
 
 	useEffect(() => {
-		// console.log('유즈이펙트 selected.event >>> ', selected.event);
 
 		if (mode === 'create') {
-			// console.log('크리에이트 모드인 경우');
 			setYear(selected.year);
 			setMonth(selected.month);
 			setDate(selected.date);
@@ -32,7 +28,6 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 			setRepeat('none');
 		}
 		if (mode === 'update') {
-			// console.log('업데이트 모드인 경우');
 			setYear(selected.event.year);
 			setMonth(selected.event.month);
 			setDate(selected.event.date);
@@ -43,7 +38,6 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 	}, [mode, selected]);
 
 	const onChangeText = (e) => {
-		// console.log('온체인지텍스트!!!!!!');
 		setText(e.target.value);
 		if (e.target.value.length > 0) {
 			clearBtn.current.classList.add('is-active');
@@ -66,7 +60,15 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 	}
 
 	const onClickSave = () => {
-		if (text.length === 0) return;
+		if (text.length === 0) {
+			alertRef.current.style.display = 'block';
+			textInput.current.focus();
+			clearTimeout(alertTimerRef);
+			alertTimerRef = setTimeout(() => {
+				alertRef.current.style.display = 'none';
+			}, 1500);
+			return;
+		}
 		let newEvent;
 		if (mode === 'create') {
 			newEvent = {
@@ -196,6 +198,7 @@ const WritePopup = ({ selected, categories, addEvent, updateEvent, changeView })
 								<input ref={textInput} name="text" value={text} placeholder="What is your event?" onChange={onChangeText} autoComplete="off" />
 								<button ref={clearBtn} type="button" className="btn btn-clear" onClick={textClear}></button>
 								{dotMaker()}
+								<div className="alert" ref={alertRef}>Please enter your event name</div>
 							</div>
 						</li>
 						<li className="form-date">

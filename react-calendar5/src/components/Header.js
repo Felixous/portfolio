@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { showWritePopup } from '../resources/js/utils';
+import { hideDeletePopup, hideReadPopup, showWritePopup } from '../resources/js/utils';
 
 const Header = ({ changeSelected }) => {
 	const onClickPlus = () => {
 		let today = new Date();
 		changeSelected(today.getFullYear(), today.getMonth() + 1, today.getDate());
+		hideReadPopup();
+		hideDeletePopup();
 		showWritePopup();
 	}
 	return (
