@@ -386,7 +386,7 @@ const initialState = {
 			year: 2021,
 			month: 12,
 			date: 24,
-			text: '노량진에서 회먹기',
+			text: '노량진에서 회 먹기',
 			category: 'home',
 			repeat: 'none'
 		},
@@ -413,7 +413,7 @@ const initialState = {
 			year: 2021,
 			month: 12,
 			date: 28,
-			text: '친구들과 망년회',
+			text: '친구들과 송년회',
 			category: 'friends',
 			repeat: 'none'
 		},
@@ -422,7 +422,7 @@ const initialState = {
 			year: 2021,
 			month: 12,
 			date: 12,
-			text: '부모님 집 가기',
+			text: '부모님 만나기',
 			category: 'home',
 			repeat: 'none'
 		},
