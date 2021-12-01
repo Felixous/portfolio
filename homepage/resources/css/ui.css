@@ -67,7 +67,7 @@ nav ul.menu-list li.is-active { opacity: 1; }
 nav ul.menu-list li .btn { display: inline-block; vertical-align: top; font-size: 0; min-width: 40px; padding: 0 10px 0 0; white-space: nowrap; text-align: center; }
 nav ul.menu-list li .first { display: inline-block; vertical-align: top; font-size: 16px; }
 nav ul.menu-list li .others { display: inline-block; vertical-align: top; width: 0; font-size: 16px; overflow: hidden; }
-nav ul.menu-list li .btn:hover .others { width: auto; padding: 0 10px 0 0; transition: width 0.2s; }
+nav ul.menu-list li .btn:hover .others { width: auto; padding: 0 10px 0 0; transition: 0.2s; }
 
 nav.is-light { color: #fff; }
 
