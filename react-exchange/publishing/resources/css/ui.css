@@ -46,6 +46,7 @@ ul, ol { list-style: none; }
 a { text-decoration: none; line-height: inherit; font-size: inherit; color: inherit; }
 table { width: 100%; table-layout: fixed; border-collapse: collapse; }
 input { border: none; line-height: inherit; font-family: inherit; font-size: inherit; color: inherit; background: none; }
+select { appearance: none; border: none; line-height: inherit; font-family: inherit; font-size: inherit; color: inherit; background: none; }
 img { vertical-align: top; }
 
 
@@ -71,7 +72,7 @@ header .title-box { display: flex; align-items: center; }
 header .title-box h1 { font-size: 18px; font-weight: 700; }
 header .title-box .base { margin: 0 0 0 16px; font-size: 14px; color: #b0b0b0; }
 header ul.menu-list { display: flex; align-items: center; }
-header ul.menu-list li { position: relative; margin: 0 0 0 20px; font-size: 14px; }
+header ul.menu-list li { position: relative; margin: 0 0 0 20px; font-size: 14px; font-weight: 500; }
 header ul.menu-list li.is-active { color: #909090; }
 header ul.menu-list li a {}
 header ul.menu-list li a:hover { opacity: .75; }
@@ -85,7 +86,7 @@ main section + section { margin-top: 60px; }
 main section .section-head { display: flex; align-items: baseline; margin: 0 0 20px 0; }
 main section .section-head h2 { font-size: 18px; }
 main section .section-head .notice { margin: 0 0 0 12px; font-size: 13px; color: #b0b0b0; }
-main section .section-main {}
+main section .section-main { padding: 0 0 0 40px; }
 
 
 /* footer */
@@ -96,16 +97,7 @@ footer p a { text-decoration: underline; text-underline-position: under; }
 footer p a:hover { opacity: .75; }
 
 
-/* section bookmark */
-section.bookmark {}
 
-
-/* section information */
-section.information {}
-
-
-/* section calculator */
-section.calculator {}
 
 
 /* table */
@@ -145,4 +137,45 @@ table.currency tbody tr:last-child td:last-child { border-radius: 0 0 4px 0; }
 .bookmark-box input[type="checkbox"]:hover { opacity: .75; }
 .bookmark-box input[type="checkbox"]:checked { background-image: url('../images/icon-bookmark-active.png'); }
 
+
+/* option */
+.option-box { display: flex; margin: 0 0 12px 0; justify-content: end; }
+.option-box .select-box { display: flex; align-items: center; }
+.option-box .select-box .title { margin: 0 16px 0 0; font-size: 14px; color: #909090; }
+.option-box .select-box select { height: 36px; padding: 0 12px; font-weight: 700; border-radius: 4px; background: #e9e9e9; _background: url('../images/icon-select.png') no-repeat right -4px top; _background-size: 24px; cursor: pointer; }
+.option-box .select-box select:hover { opacity: .75; }
+
+
+/* subject */
+.subject-box { border-top: 2px solid #303030; }
+.subject-box .title {}
+.subject-box .title .bookmark-box { margin: 20px 0 0 0; }
+.subject-box .title h3 { display: inline-block; font-size: 64px; }
+.subject-box .title b { margin: 0 0 0 20px; font-size: 24px; }
+.subject-box .desc { display: flex; }
+.subject-box .desc dl { display: flex; align-items: center; }
+.subject-box .desc dl dt { position: relative; _padding: 0 0 0 10px; font-size: 14px; _color: #909090; }
+.subject-box .desc dl dt::before { _content: ''; position: absolute; top: 50%; left: 0; margin-top: -2px; width: 4px; height: 2px; _border-radius: 50%; background: #909090; }
+.subject-box .desc dl dd { margin: 0 32px 0 8px; font-size: 14px; }
+
+
+/* chart */
+.chart-box { margin: 60px 0 0 0; height: 240px; border-radius: 4px; background: #e9e9e9; }
+
+
+/* section bookmark */
+section.bookmark {}
+
+
+/* section information */
+section.information {}
+
+
+/* section calculator */
+section.calculator {}
+
+
+/* section detail */
+section.detail {}
+section.detail .table-box { margin-top: 40px; }
 
