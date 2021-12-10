@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 
-	<title>React Exchange</title>
+	<title>Felix's Exchange</title>
 
 	<link rel="stylesheet" href="./resources/css/ui.css" />
 </head>
@@ -52,7 +52,7 @@
 					
 					<div class="section-main">
 						<div class="table-box">
-							<table class="currency">
+							<table>
 								<caption class="hidden">즐겨찾는 환율 정보</caption>
 								<colgroup>
 									<col style="width: 100px;" />
@@ -98,8 +98,8 @@
 										<td>USD</td>
 										<td>미국</td>
 										<td>1,179.80</td>
-										<td><span class="up">2.00 상승</span></td>
-										<td><span class="up">+ 0.17%</span></td>
+										<td><span class="point-up"><span class="icon"></span>2.00</span></td>
+										<td><span class="point-up">+ 0.17%</span></td>
 										<td>
 											<a href="#none" class="btn btn-link">상세</a>
 											<a href="#none" class="btn btn-link">계산기</a>
@@ -114,8 +114,24 @@
 										<td>USD</td>
 										<td>미국</td>
 										<td>1,179.80</td>
-										<td><span class="down">2.00 하락</span></td>
-										<td><span class="down">- 0.17%</span></td>
+										<td><span class="point-equal"><span class="icon"></span>0.00</span></td>
+										<td><span class="point-equal">0.00%</span></td>
+										<td>
+											<a href="#none" class="btn btn-link">상세</a>
+											<a href="#none" class="btn btn-link">계산기</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="bookmark-box">
+												<input type="checkbox" checked />
+											</div>
+										</td>
+										<td>USD</td>
+										<td>미국</td>
+										<td>1,179.80</td>
+										<td><span class="point-down"><span class="icon"></span>2.00</span></td>
+										<td><span class="point-down">- 0.17%</span></td>
 										<td>
 											<a href="#none" class="btn btn-link">상세</a>
 											<a href="#none" class="btn btn-link">계산기</a>
@@ -134,13 +150,13 @@
 						<span class="notice">기준일 2021/12/07</span>
 					</div>
 					<div class="section-main">
-						<div class="search-box">
+						<div class="option-box">
 							<div class="input-box">
 								<input type="text" placeholder="통화 및 국가 검색" />
 							</div>
 						</div>
 						<div class="table-box">
-							<table class="currency">
+							<table>
 								<caption class="hidden">전체 환율 정보</caption>
 								<colgroup>
 									<col style="width: 100px;" />
@@ -186,8 +202,24 @@
 										<td>USD</td>
 										<td>미국</td>
 										<td>1,179.80</td>
-										<td><span class="up">2.00 상승</span></td>
-										<td><span class="up">+ 0.17%</span></td>
+										<td><span class="point-up"><span class="icon"></span>2.00</span></td>
+										<td><span class="point-up">+ 0.17%</span></td>
+										<td>
+											<a href="#none" class="btn btn-link">상세</a>
+											<a href="#none" class="btn btn-link">계산기</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="bookmark-box">
+												<input type="checkbox" checked />
+											</div>
+										</td>
+										<td>USD</td>
+										<td>미국</td>
+										<td>1,179.80</td>
+										<td><span class="point-equal"><span class="icon"></span>0.00</span></td>
+										<td><span class="point-equal">0.00%</span></td>
 										<td>
 											<a href="#none" class="btn btn-link">상세</a>
 											<a href="#none" class="btn btn-link">계산기</a>
@@ -202,8 +234,8 @@
 										<td>USD</td>
 										<td>미국</td>
 										<td>1,179.80</td>
-										<td><span class="down">2.00 하락</span></td>
-										<td><span class="down">- 0.17%</span></td>
+										<td><span class="point-down"><span class="icon"></span>2.00</span></td>
+										<td><span class="point-down">- 0.17%</span></td>
 										<td>
 											<a href="#none" class="btn btn-link">상세</a>
 											<a href="#none" class="btn btn-link">계산기</a>
