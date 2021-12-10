@@ -43,104 +43,142 @@
 		<main>
 			<div class="inner">
 	
-				<section class="detail">
+				<section class="calculator">
 					<div class="section-head">
 						<h2>환율 계산기</h2>
 						<span class="notice">기준일 2021/12/07</span>
 					</div>
 					<div class="section-main">
-						<div class="option-box">
-							<div class="select-box">
-								<span class="title">화폐선택</span>
-								<select>
-									<option>USD</option>
-									<option>USD</option>
-									<option>USD</option>
-									<option>USD</option>
-									<option>USD</option>
-									<option>USD</option>
-								</select>
-							</div>
-						</div>
-						<div class="subject-box">
-							<div class="title">
-								<h3>USD</h3>
-								<b>1,179.80</b>
-								<div class="bookmark-box">
-									<input type="checkbox" checked />
+
+						<div class="calc-box">
+
+							<div class="entry-box">
+								<div class="option-box">
+									<div class="select-box">
+										<select>
+											<option>USD</option>
+											<option>USD</option>
+											<option>USD</option>
+											<option>USD</option>
+											<option>USD</option>
+											<option>USD</option>
+										</select>
+										<span class="title">입력</span>
+									</div>
+								</div>
+								<div class="subject-box">
+									<div class="title">
+										<h3>USD</h3>
+										<div class="bookmark-box">
+											<input type="checkbox" checked />
+										</div>
+									</div>
+								</div>
+								<div class="input-money-box">
+									<input type="text" value="1.00" />
+									<span class="unit">달러</span>
 								</div>
 							</div>
-							<div class="desc">
-								<dl>
-									<dt>국가</dt>
-									<dd>미국</dd>
-									<dt>전일대비</dt>
-									<dd><span class="point-up"><span class="icon"></span>2.00</span></dd>
-									<dt>등락률</dt>
-									<dd><span class="point-up">+ 0.17%</span></dd>
-								</dl>
+
+							<div class="center-box">
+								<button type="button" class="btn btn-exchange"></button>
 							</div>
+
+							<div class="result-box">
+								<div class="option-box">
+									<div class="select-box">
+										<span class="title">출력</span>
+										<select>
+											<option>KRW</option>
+											<option>KRW</option>
+											<option>KRW</option>
+											<option>KRW</option>
+											<option>KRW</option>
+											<option>KRW</option>
+										</select>
+									</div>
+								</div>
+								<div class="subject-box">
+									<div class="title">
+										<div class="bookmark-box">
+											<input type="checkbox" checked />
+										</div>
+										<h3>KRW</h3>
+									</div>
+									<div class="input-money-box">
+										<input type="text" value="1,181.00" readonly />
+										<span class="unit">원</span>
+									</div>
+								</div>
+							</div>
+
 						</div>
+
+
 						<div class="subtitle-box">
 							<h4>계산 기록</h4>
 						</div>
+
 						<div class="table-box">
-							<table class="min-900">
-								<caption class="hidden">즐겨찾는 환율 정보</caption>
+							<table>
+								<caption class="hidden">계산 기록 정보</caption>
 								<colgroup>
-									<col style="width: 200px;" />
-									<col style="width: 100px;"/>
 									<col />
-									<col style="width: 100px;"/>
 									<col />
-									<col style="width: 100px;" />
+									<col />
+									<col />
 								</colgroup>
 								<thead>
 									<tr>
 										<th>기록시간</th>
-										<th>입력통화</th>
-										<th>입력금액</th>
-										<th>결과통화</th>
-										<th>결과금액</th>
-										<th></th>
+										<th>입력</th>
+										<th>출력</th>
+										<th>복사</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>2021/12/09 13:08:40</td>
-										<td>USD</td>
-										<td>1,179.80</td>
-										<td>KRW</td>
-										<td>1,179,179.80</td>
-										<td><a href="#none" class="btn btn-link">copy</a></td>
+										<td colspan="4">
+											<div class="no-result">
+												저장 결과가 없습니다 : )
+											</div>
+										</td>
 									</tr>
 									<tr>
-										<td>2021/12/09 13:08:40</td>
-										<td>USD</td>
-										<td>1,179.80</td>
-										<td>KRW</td>
-										<td>1,179,179.80</td>
-										<td><a href="#none" class="btn btn-link">copy</a></td>
+										<td>2021/12/10 21:45</td>
+										<td>USD 1,000,000.00</td>
+										<td>KRW 1,181,500,000.00</td>
+										<td><a href="#none" class="btn btn-link">Copy</a></td>
 									</tr>
 									<tr>
-										<td>2021/12/09 13:08:40</td>
-										<td>USD</td>
-										<td>1,179.80</td>
-										<td>KRW</td>
-										<td>1,179,179.80</td>
-										<td><a href="#none" class="btn btn-link">copy</a></td>
+										<td>2021/12/10 20:45</td>
+										<td>USD 1,000,000.00</td>
+										<td>KRW 1,181,500,000.00</td>
+										<td><a href="#none" class="btn btn-link">Copy</a></td>
 									</tr>
 									<tr>
-										<td>2021/12/09 13:08:40</td>
-										<td>USD</td>
-										<td>1,179.80</td>
-										<td>KRW</td>
-										<td>1,179,179.80</td>
-										<td><a href="#none" class="btn btn-link">copy</a></td>
+										<td>2021/12/10 19:45</td>
+										<td>USD 1,000,000.00</td>
+										<td>KRW 1,181,500,000.00</td>
+										<td><a href="#none" class="btn btn-link">Copy</a></td>
+									</tr>
+									<tr>
+										<td>2021/12/10 18:45</td>
+										<td>USD 1,000,000.00</td>
+										<td>KRW 1,181,500,000.00</td>
+										<td><a href="#none" class="btn btn-link">Copy</a></td>
+									</tr>
+									<tr>
+										<td>2021/12/10 17:45</td>
+										<td>USD 1,000,000.00</td>
+										<td>KRW 1,181,500,000.00</td>
+										<td><a href="#none" class="btn btn-link">Copy</a></td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
+						
+
 					</div>
 				</section>
 	
